@@ -34,10 +34,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.navigationController?.pushViewController(viewController, animated: true)
     }
     func latest() {
-        let income = CountSpending().latestUsageCount(transaction: .income)
-        latestUsage[0].usagePrice = income
-        let outcome = CountSpending().latestUsageCount(transaction: .outcome)
-        latestUsage[1].usagePrice = outcome
+        CountSpending().latestUsageCount(transaction: .income)
+        CountSpending().latestUsageCount(transaction: .outcome)
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return usageHistory.count

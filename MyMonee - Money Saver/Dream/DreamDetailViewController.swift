@@ -61,8 +61,26 @@ class DreamDetailViewController: UIViewController {
         self.navigationController?.pushViewController(viewController, animated: true)
     }
     @IBAction func dreamReachedButton(_ sender: Any) {
-        dreams.remove(at: self.indexRow)
+        let alert = UIAlertController (title: "Selamat! \n Target impian anda telah tercapai! \n Apakah sudah melakukan transaksi?", message: "", preferredStyle: UIAlertController.Style.alert)
+        let deleteAction = UIAlertAction(title: "Ya", style: UIAlertAction.Style.default) {_ in
+            let ids = "MM-\(self.randomString(length: 6))"
+            let title = self.titles
+            let amount = self.goal
+            let timestamp = DateFormatter.localizedString(from: Date(), dateStyle: .medium, timeStyle: .short)
+            let usage = UsageHistory(ids: ids, usageName: title, usagePrice: amount, usageDate: timestamp, status: false)
+            Usage(usage: usage).addNewUsage()
+            dreams.remove(at: self.indexRow)
+            let viewController = DreamTableViewController(nibName: String(describing: DreamTableViewController.self), bundle: nil)
+            self.navigationController?.pushViewController(viewController, animated: true)
+            }
+        alert.addAction(deleteAction)
+        alert.addAction(UIAlertAction(title: "Batal", style: UIAlertAction.Style.cancel, handler: nil))
+        self.present(alert, animated: true, completion: nil)
         let viewController = DreamTableViewController(nibName: String(describing: DreamTableViewController.self), bundle: nil)
         self.navigationController?.pushViewController(viewController, animated: true)
+    }
+    func randomString(length: Int) -> String {
+      let letters = "0123456789"
+      return String((0..<length).map { _ in letters.randomElement()! })
     }
 }

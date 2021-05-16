@@ -13,7 +13,7 @@ enum Transaction {
 }
 
 protocol LatestCount {
-   func latestUsageCount(transaction: Transaction) -> Int
+   func latestUsageCount(transaction: Transaction)
 }
 
 struct CountUsage {
@@ -33,13 +33,15 @@ var latestUsage: [CountUsage] = [
 ]
 
 class CountSpending: LatestCount {
-    func latestUsageCount(transaction: Transaction) -> Int {
-        let arrayWithNoOptionals = latestUsage.compactMap { $0 }
+    func latestUsageCount(transaction: Transaction) {
+        let arrayWithNoOptionals = usageHistory.compactMap { $0 }
         switch transaction {
         case .income:
-            return arrayWithNoOptionals.filter({$0.status == true}).map({$0.usagePrice ?? 0}).reduce(0, +)
+            let incomeCount = arrayWithNoOptionals.filter({$0.status == true}).map({$0.usagePrice ?? 0}).reduce(0, +)
+            latestUsage[0].usagePrice = incomeCount
         case .outcome:
-            return arrayWithNoOptionals.filter({$0.status == false}).map({$0.usagePrice ?? 0}).reduce(0, +)
+            let outcomeCount = arrayWithNoOptionals.filter({$0.status == false}).map({$0.usagePrice ?? 0}).reduce(0, +)
+            latestUsage[1].usagePrice = outcomeCount
         }
     }
 }
