@@ -24,6 +24,7 @@
 		FA6B8A12264D4D2300AEAA1C /* Dreams.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6B8A11264D4D2300AEAA1C /* Dreams.swift */; };
 		FAA2D8C22650B86C00112D04 /* PopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA2D8C02650B86C00112D04 /* PopUpViewController.swift */; };
 		FAA2D8C32650B86C00112D04 /* PopUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAA2D8C12650B86C00112D04 /* PopUpViewController.xib */; };
+		FAA2D8D526516A0600112D04 /* CountUsage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA2D8D426516A0600112D04 /* CountUsage.swift */; };
 		FAAE3FED264B67B900BE2604 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAE3FEC264B67B900BE2604 /* AppDelegate.swift */; };
 		FAAE3FEF264B67B900BE2604 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAE3FEE264B67B900BE2604 /* SceneDelegate.swift */; };
 		FAAE3FF1264B67B900BE2604 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAE3FF0264B67B900BE2604 /* ViewController.swift */; };
@@ -71,6 +72,7 @@
 		FA6B8A11264D4D2300AEAA1C /* Dreams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dreams.swift; sourceTree = "<group>"; };
 		FAA2D8C02650B86C00112D04 /* PopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpViewController.swift; sourceTree = "<group>"; };
 		FAA2D8C12650B86C00112D04 /* PopUpViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PopUpViewController.xib; sourceTree = "<group>"; };
+		FAA2D8D426516A0600112D04 /* CountUsage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountUsage.swift; sourceTree = "<group>"; };
 		FAAE3FE9264B67B900BE2604 /* MyMonee - Money Saver.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MyMonee - Money Saver.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAAE3FEC264B67B900BE2604 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FAAE3FEE264B67B900BE2604 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -245,6 +247,7 @@
 			children = (
 				FAAE407E264BB1FC00BE2604 /* UsageHistory.swift */,
 				FA6B8A11264D4D2300AEAA1C /* Dreams.swift */,
+				FAA2D8D426516A0600112D04 /* CountUsage.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -390,6 +393,7 @@
 				FAAE4084264BC16F00BE2604 /* HomeTableViewCell.swift in Sources */,
 				FAAE4091264BE75E00BE2604 /* DreamTableViewController.swift in Sources */,
 				FA509066264FBA0000D12A8A /* DreamEditViewController.swift in Sources */,
+				FAA2D8D526516A0600112D04 /* CountUsage.swift in Sources */,
 				FAAE406D264B9D7300BE2604 /* HomeViewController.swift in Sources */,
 				FAA2D8C22650B86C00112D04 /* PopUpViewController.swift in Sources */,
 				FA6B8A12264D4D2300AEAA1C /* Dreams.swift in Sources */,

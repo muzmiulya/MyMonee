@@ -127,21 +127,11 @@
                                 <constraint firstAttribute="height" constant="26" id="wxW-xr-yCT"/>
                             </constraints>
                         </view>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y1X-Qm-9lH">
-                            <rect key="frame" x="184" y="281" width="46" height="30"/>
-                            <state key="normal" title="Button"/>
-                            <connections>
-                                <action selector="actionButton:" destination="-1" eventType="touchUpInside" id="oag-Se-g8i"/>
-                            </connections>
-                        </button>
                     </subviews>
                     <color key="backgroundColor" red="0.31372549019607843" green="0.41176470588235292" blue="0.72156862745098038" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstAttribute="trailing" secondItem="y1X-Qm-9lH" secondAttribute="trailing" constant="184" id="3wZ-9f-KAQ"/>
                         <constraint firstItem="zZf-d3-3tM" firstAttribute="top" secondItem="a61-mh-QtX" secondAttribute="top" constant="42" id="Cnh-gT-Y33"/>
                         <constraint firstItem="NdS-Dt-Ti7" firstAttribute="centerX" secondItem="4Tq-Sz-ipL" secondAttribute="centerX" id="J24-G9-Bqx"/>
-                        <constraint firstItem="y1X-Qm-9lH" firstAttribute="top" secondItem="fmj-4Q-JTz" secondAttribute="bottom" constant="27" id="JPA-m8-b5F"/>
-                        <constraint firstItem="y1X-Qm-9lH" firstAttribute="leading" secondItem="a61-mh-QtX" secondAttribute="leading" constant="184" id="Ld4-S2-EeO"/>
                         <constraint firstAttribute="trailing" secondItem="HLe-e9-utl" secondAttribute="trailing" constant="8" id="Mq7-DS-HbE"/>
                         <constraint firstItem="NdS-Dt-Ti7" firstAttribute="top" secondItem="Box-AN-4bC" secondAttribute="bottom" constant="26" id="NVM-nF-fEI"/>
                         <constraint firstAttribute="trailing" secondItem="zZf-d3-3tM" secondAttribute="trailing" constant="8" id="P7P-uk-Hh5"/>
@@ -152,7 +142,6 @@
                         <constraint firstAttribute="height" constant="311" id="s1Z-I7-4cF"/>
                         <constraint firstItem="fmj-4Q-JTz" firstAttribute="top" secondItem="NdS-Dt-Ti7" secondAttribute="bottom" constant="4" id="tmm-gH-eIO"/>
                         <constraint firstItem="HLe-e9-utl" firstAttribute="top" secondItem="a61-mh-QtX" secondAttribute="top" constant="42" id="ufE-OD-C4R"/>
-                        <constraint firstAttribute="bottom" secondItem="y1X-Qm-9lH" secondAttribute="bottom" id="vMa-Xm-pdM"/>
                         <constraint firstItem="Box-AN-4bC" firstAttribute="centerX" secondItem="a61-mh-QtX" secondAttribute="centerX" id="xUn-Gl-YIi"/>
                     </constraints>
                 </view>
@@ -166,15 +155,6 @@
             </constraints>
             <point key="canvasLocation" x="71" y="-42"/>
         </view>
-        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Profile_Photo" id="Br3-2M-yfd">
-            <rect key="frame" x="0.0" y="0.0" width="101" height="101"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <constraints>
-                <constraint firstAttribute="height" constant="101" id="15e-Q6-aqA"/>
-                <constraint firstAttribute="width" constant="101" id="rXe-DL-RPg"/>
-            </constraints>
-            <point key="canvasLocation" x="-402" y="-223"/>
-        </imageView>
     </objects>
     <resources>
         <image name="Edit_Name" width="16" height="16"/>

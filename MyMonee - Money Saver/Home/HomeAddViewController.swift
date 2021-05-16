@@ -63,7 +63,7 @@ class HomeAddViewController: UIViewController, UITextFieldDelegate {
         let amount = Int(usageAmount.text ?? "") ?? 0
         let timestamp = DateFormatter.localizedString(from: Date(), dateStyle: .medium, timeStyle: .short)
         let usage = UsageHistory(ids: ids, usageName: title, usagePrice: amount, usageDate: timestamp, status: utilization)
-        AddUsage(usage: usage).addNewUsage()
+        Usage(usage: usage).addNewUsage()
         let viewController = HomeViewController(nibName: String(describing: HomeViewController.self), bundle: nil)
         self.navigationController?.pushViewController(viewController, animated: true)
     }

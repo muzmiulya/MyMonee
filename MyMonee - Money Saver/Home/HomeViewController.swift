@@ -27,10 +27,17 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         usageHistoryView.layer.cornerRadius = 25
         totalCashView.layer.cornerRadius = 10
         totalBalanceLabel.text = "Rp \(Balance().countBalance())"
+        latest()
     }
     @IBAction func buttonAdd(_ sender: Any) {
         let viewController = HomeAddViewController(nibName: String(describing: HomeAddViewController.self), bundle: nil)
         self.navigationController?.pushViewController(viewController, animated: true)
+    }
+    func latest() {
+        let income = CountSpending().latestUsageCount(transaction: .income)
+        latestUsage[0].usagePrice = income
+        let outcome = CountSpending().latestUsageCount(transaction: .outcome)
+        latestUsage[1].usagePrice = outcome
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return usageHistory.count

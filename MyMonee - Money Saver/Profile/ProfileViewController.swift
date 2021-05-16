@@ -60,9 +60,6 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate &
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
             dismiss(animated: true, completion: nil)
     }
-    @IBAction func actionButton(_ sender: Any) {
-        Balance().countBalance()
-    }
 }
 extension ProfileViewController: PassNameDelegate {
     func newName(name: String) {
