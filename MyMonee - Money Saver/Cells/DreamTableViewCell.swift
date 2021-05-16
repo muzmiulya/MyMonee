@@ -9,9 +9,14 @@ import UIKit
 
 class DreamTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var dreamMainView: UIView!
+    @IBOutlet weak var dreamTitleLabel: UILabel!
+    @IBOutlet weak var dreamPriceLabel: UILabel!
+    @IBOutlet weak var dreamPriceGoalLabel: UILabel!
+    @IBOutlet weak var dreamProgressView: UIProgressView!
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        dreamMainView.layer.cornerRadius = 5
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -19,5 +24,4 @@ class DreamTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
 }

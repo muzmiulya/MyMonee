@@ -9,6 +9,11 @@ import UIKit
 
 class HomeTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var mainView: UIView!
+    @IBOutlet weak var imageStatus: UIImageView!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var priceLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -19,5 +24,4 @@ class HomeTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
 }

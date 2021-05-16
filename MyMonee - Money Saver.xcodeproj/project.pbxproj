@@ -7,23 +7,108 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FA3CF689264E17280042D92F /* HomeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3CF687264E17280042D92F /* HomeDetailViewController.swift */; };
+		FA3CF68A264E17280042D92F /* HomeDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA3CF688264E17280042D92F /* HomeDetailViewController.xib */; };
+		FA3CF68F264E62690042D92F /* DreamDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3CF68D264E62690042D92F /* DreamDetailViewController.swift */; };
+		FA3CF690264E62690042D92F /* DreamDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA3CF68E264E62690042D92F /* DreamDetailViewController.xib */; };
+		FA50904F264E814600D12A8A /* DreamAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA50904D264E814600D12A8A /* DreamAddViewController.swift */; };
+		FA509050264E814600D12A8A /* DreamAddViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA50904E264E814600D12A8A /* DreamAddViewController.xib */; };
+		FA509054264F53A300D12A8A /* HomeEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA509052264F53A300D12A8A /* HomeEditViewController.swift */; };
+		FA509055264F53A300D12A8A /* HomeEditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA509053264F53A300D12A8A /* HomeEditViewController.xib */; };
+		FA509066264FBA0000D12A8A /* DreamEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA509064264FBA0000D12A8A /* DreamEditViewController.swift */; };
+		FA509067264FBA0000D12A8A /* DreamEditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA509065264FBA0000D12A8A /* DreamEditViewController.xib */; };
+		FA6B8A08264D0B0900AEAA1C /* HomeAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6B8A06264D0B0900AEAA1C /* HomeAddViewController.swift */; };
+		FA6B8A09264D0B0900AEAA1C /* HomeAddViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA6B8A07264D0B0900AEAA1C /* HomeAddViewController.xib */; };
+		FA6B8A0E264D494C00AEAA1C /* DreamTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6B8A0C264D494C00AEAA1C /* DreamTableViewCell.swift */; };
+		FA6B8A0F264D494C00AEAA1C /* DreamTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA6B8A0D264D494C00AEAA1C /* DreamTableViewCell.xib */; };
+		FA6B8A12264D4D2300AEAA1C /* Dreams.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6B8A11264D4D2300AEAA1C /* Dreams.swift */; };
+		FAA2D8C22650B86C00112D04 /* PopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA2D8C02650B86C00112D04 /* PopUpViewController.swift */; };
+		FAA2D8C32650B86C00112D04 /* PopUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAA2D8C12650B86C00112D04 /* PopUpViewController.xib */; };
 		FAAE3FED264B67B900BE2604 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAE3FEC264B67B900BE2604 /* AppDelegate.swift */; };
 		FAAE3FEF264B67B900BE2604 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAE3FEE264B67B900BE2604 /* SceneDelegate.swift */; };
 		FAAE3FF1264B67B900BE2604 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAE3FF0264B67B900BE2604 /* ViewController.swift */; };
-		FAAE3FF4264B67B900BE2604 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAAE3FF2264B67B900BE2604 /* Main.storyboard */; };
 		FAAE3FF6264B67BB00BE2604 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAAE3FF5264B67BB00BE2604 /* Assets.xcassets */; };
 		FAAE3FF9264B67BB00BE2604 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAAE3FF7264B67BB00BE2604 /* LaunchScreen.storyboard */; };
+		FAAE403C264B732E00BE2604 /* Poppins-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FAAE4032264B732B00BE2604 /* Poppins-Black.ttf */; };
+		FAAE403E264B733200BE2604 /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FAAE4031264B732B00BE2604 /* Poppins-Bold.ttf */; };
+		FAAE4040264B733400BE2604 /* Poppins-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FAAE4035264B732B00BE2604 /* Poppins-ExtraBold.ttf */; };
+		FAAE4042264B733800BE2604 /* Poppins-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FAAE4030264B732B00BE2604 /* Poppins-ExtraLight.ttf */; };
+		FAAE4044264B733D00BE2604 /* Poppins-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FAAE402E264B732B00BE2604 /* Poppins-Light.ttf */; };
+		FAAE4046264B734000BE2604 /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FAAE4037264B732B00BE2604 /* Poppins-Medium.ttf */; };
+		FAAE4048264B734200BE2604 /* Poppins-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FAAE4033264B732B00BE2604 /* Poppins-Regular.ttf */; };
+		FAAE404A264B734600BE2604 /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FAAE403B264B732B00BE2604 /* Poppins-SemiBold.ttf */; };
+		FAAE404C264B734800BE2604 /* Poppins-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FAAE402C264B732B00BE2604 /* Poppins-Thin.ttf */; };
+		FAAE4052264B816200BE2604 /* MainTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAE4050264B816200BE2604 /* MainTabController.swift */; };
+		FAAE4053264B816200BE2604 /* MainTabController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAAE4051264B816200BE2604 /* MainTabController.xib */; };
+		FAAE4059264B893400BE2604 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAE4057264B893400BE2604 /* ProfileViewController.swift */; };
+		FAAE405A264B893400BE2604 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAAE4058264B893400BE2604 /* ProfileViewController.xib */; };
+		FAAE406D264B9D7300BE2604 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAE406B264B9D7300BE2604 /* HomeViewController.swift */; };
+		FAAE406E264B9D7300BE2604 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAAE406C264B9D7300BE2604 /* HomeViewController.xib */; };
+		FAAE407F264BB1FC00BE2604 /* UsageHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAE407E264BB1FC00BE2604 /* UsageHistory.swift */; };
+		FAAE4084264BC16F00BE2604 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAE4082264BC16F00BE2604 /* HomeTableViewCell.swift */; };
+		FAAE4085264BC16F00BE2604 /* HomeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAAE4083264BC16F00BE2604 /* HomeTableViewCell.xib */; };
+		FAAE408A264BD2D200BE2604 /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAE4088264BD2D200BE2604 /* HomeCollectionViewCell.swift */; };
+		FAAE408B264BD2D200BE2604 /* HomeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAAE4089264BD2D200BE2604 /* HomeCollectionViewCell.xib */; };
+		FAAE4091264BE75E00BE2604 /* DreamTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAE408F264BE75E00BE2604 /* DreamTableViewController.swift */; };
+		FAAE4092264BE75E00BE2604 /* DreamTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAAE4090264BE75E00BE2604 /* DreamTableViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FA3CF687264E17280042D92F /* HomeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDetailViewController.swift; sourceTree = "<group>"; };
+		FA3CF688264E17280042D92F /* HomeDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeDetailViewController.xib; sourceTree = "<group>"; };
+		FA3CF68D264E62690042D92F /* DreamDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DreamDetailViewController.swift; sourceTree = "<group>"; };
+		FA3CF68E264E62690042D92F /* DreamDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DreamDetailViewController.xib; sourceTree = "<group>"; };
+		FA50904D264E814600D12A8A /* DreamAddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DreamAddViewController.swift; sourceTree = "<group>"; };
+		FA50904E264E814600D12A8A /* DreamAddViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DreamAddViewController.xib; sourceTree = "<group>"; };
+		FA509052264F53A300D12A8A /* HomeEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeEditViewController.swift; sourceTree = "<group>"; };
+		FA509053264F53A300D12A8A /* HomeEditViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeEditViewController.xib; sourceTree = "<group>"; };
+		FA509064264FBA0000D12A8A /* DreamEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DreamEditViewController.swift; sourceTree = "<group>"; };
+		FA509065264FBA0000D12A8A /* DreamEditViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DreamEditViewController.xib; sourceTree = "<group>"; };
+		FA6B8A06264D0B0900AEAA1C /* HomeAddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAddViewController.swift; sourceTree = "<group>"; };
+		FA6B8A07264D0B0900AEAA1C /* HomeAddViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeAddViewController.xib; sourceTree = "<group>"; };
+		FA6B8A0C264D494C00AEAA1C /* DreamTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DreamTableViewCell.swift; sourceTree = "<group>"; };
+		FA6B8A0D264D494C00AEAA1C /* DreamTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DreamTableViewCell.xib; sourceTree = "<group>"; };
+		FA6B8A11264D4D2300AEAA1C /* Dreams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dreams.swift; sourceTree = "<group>"; };
+		FAA2D8C02650B86C00112D04 /* PopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpViewController.swift; sourceTree = "<group>"; };
+		FAA2D8C12650B86C00112D04 /* PopUpViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PopUpViewController.xib; sourceTree = "<group>"; };
 		FAAE3FE9264B67B900BE2604 /* MyMonee - Money Saver.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MyMonee - Money Saver.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAAE3FEC264B67B900BE2604 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FAAE3FEE264B67B900BE2604 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		FAAE3FF0264B67B900BE2604 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		FAAE3FF3264B67B900BE2604 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FAAE3FF5264B67BB00BE2604 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FAAE3FF8264B67BB00BE2604 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FAAE3FFA264B67BB00BE2604 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FAAE402A264B732B00BE2604 /* Poppins-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Poppins-Italic.ttf"; path = "../../../../font/Poppins-Italic.ttf"; sourceTree = "<group>"; };
+		FAAE402B264B732B00BE2604 /* Poppins-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Poppins-MediumItalic.ttf"; path = "../../../../font/Poppins-MediumItalic.ttf"; sourceTree = "<group>"; };
+		FAAE402C264B732B00BE2604 /* Poppins-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Poppins-Thin.ttf"; path = "../../../../font/Poppins-Thin.ttf"; sourceTree = "<group>"; };
+		FAAE402D264B732B00BE2604 /* Poppins-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Poppins-BoldItalic.ttf"; path = "../../../../font/Poppins-BoldItalic.ttf"; sourceTree = "<group>"; };
+		FAAE402E264B732B00BE2604 /* Poppins-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Poppins-Light.ttf"; path = "../../../../font/Poppins-Light.ttf"; sourceTree = "<group>"; };
+		FAAE402F264B732B00BE2604 /* Poppins-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Poppins-BlackItalic.ttf"; path = "../../../../font/Poppins-BlackItalic.ttf"; sourceTree = "<group>"; };
+		FAAE4030264B732B00BE2604 /* Poppins-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Poppins-ExtraLight.ttf"; path = "../../../../font/Poppins-ExtraLight.ttf"; sourceTree = "<group>"; };
+		FAAE4031264B732B00BE2604 /* Poppins-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Poppins-Bold.ttf"; path = "../../../../font/Poppins-Bold.ttf"; sourceTree = "<group>"; };
+		FAAE4032264B732B00BE2604 /* Poppins-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Poppins-Black.ttf"; path = "../../../../font/Poppins-Black.ttf"; sourceTree = "<group>"; };
+		FAAE4033264B732B00BE2604 /* Poppins-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Poppins-Regular.ttf"; path = "../../../../font/Poppins-Regular.ttf"; sourceTree = "<group>"; };
+		FAAE4034264B732B00BE2604 /* Poppins-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Poppins-ExtraBoldItalic.ttf"; path = "../../../../font/Poppins-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
+		FAAE4035264B732B00BE2604 /* Poppins-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Poppins-ExtraBold.ttf"; path = "../../../../font/Poppins-ExtraBold.ttf"; sourceTree = "<group>"; };
+		FAAE4036264B732B00BE2604 /* Poppins-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Poppins-SemiBoldItalic.ttf"; path = "../../../../font/Poppins-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
+		FAAE4037264B732B00BE2604 /* Poppins-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Poppins-Medium.ttf"; path = "../../../../font/Poppins-Medium.ttf"; sourceTree = "<group>"; };
+		FAAE4038264B732B00BE2604 /* Poppins-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Poppins-LightItalic.ttf"; path = "../../../../font/Poppins-LightItalic.ttf"; sourceTree = "<group>"; };
+		FAAE4039264B732B00BE2604 /* Poppins-ExtraLightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Poppins-ExtraLightItalic.ttf"; path = "../../../../font/Poppins-ExtraLightItalic.ttf"; sourceTree = "<group>"; };
+		FAAE403A264B732B00BE2604 /* Poppins-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Poppins-ThinItalic.ttf"; path = "../../../../font/Poppins-ThinItalic.ttf"; sourceTree = "<group>"; };
+		FAAE403B264B732B00BE2604 /* Poppins-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Poppins-SemiBold.ttf"; path = "../../../../font/Poppins-SemiBold.ttf"; sourceTree = "<group>"; };
+		FAAE4050264B816200BE2604 /* MainTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabController.swift; sourceTree = "<group>"; };
+		FAAE4051264B816200BE2604 /* MainTabController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainTabController.xib; sourceTree = "<group>"; };
+		FAAE4057264B893400BE2604 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		FAAE4058264B893400BE2604 /* ProfileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
+		FAAE406B264B9D7300BE2604 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		FAAE406C264B9D7300BE2604 /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
+		FAAE407E264BB1FC00BE2604 /* UsageHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsageHistory.swift; sourceTree = "<group>"; };
+		FAAE4082264BC16F00BE2604 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
+		FAAE4083264BC16F00BE2604 /* HomeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeTableViewCell.xib; sourceTree = "<group>"; };
+		FAAE4088264BD2D200BE2604 /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
+		FAAE4089264BD2D200BE2604 /* HomeCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeCollectionViewCell.xib; sourceTree = "<group>"; };
+		FAAE408F264BE75E00BE2604 /* DreamTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DreamTableViewController.swift; sourceTree = "<group>"; };
+		FAAE4090264BE75E00BE2604 /* DreamTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DreamTableViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,6 +122,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FA6AC47D2650A3C800337AA0 /* PopUp */ = {
+			isa = PBXGroup;
+			children = (
+				FAA2D8C02650B86C00112D04 /* PopUpViewController.swift */,
+				FAA2D8C12650B86C00112D04 /* PopUpViewController.xib */,
+			);
+			path = PopUp;
+			sourceTree = "<group>";
+		};
 		FAAE3FE0264B67B900BE2604 = {
 			isa = PBXGroup;
 			children = (
@@ -56,15 +150,118 @@
 		FAAE3FEB264B67B900BE2604 /* MyMonee - Money Saver */ = {
 			isa = PBXGroup;
 			children = (
+				FA6AC47D2650A3C800337AA0 /* PopUp */,
+				FAAE408D264BE73200BE2604 /* Dream */,
+				FAAE407D264BB1A700BE2604 /* Model */,
+				FAAE4070264BA57500BE2604 /* Cells */,
+				FAAE4056264B88EB00BE2604 /* Profile */,
+				FAAE404F264B810C00BE2604 /* MainTab */,
+				FAAE404E264B73FA00BE2604 /* Home */,
+				FAAE4004264B6F6A00BE2604 /* font */,
 				FAAE3FEC264B67B900BE2604 /* AppDelegate.swift */,
 				FAAE3FEE264B67B900BE2604 /* SceneDelegate.swift */,
 				FAAE3FF0264B67B900BE2604 /* ViewController.swift */,
-				FAAE3FF2264B67B900BE2604 /* Main.storyboard */,
 				FAAE3FF5264B67BB00BE2604 /* Assets.xcassets */,
 				FAAE3FF7264B67BB00BE2604 /* LaunchScreen.storyboard */,
 				FAAE3FFA264B67BB00BE2604 /* Info.plist */,
 			);
 			path = "MyMonee - Money Saver";
+			sourceTree = "<group>";
+			wrapsLines = 1;
+		};
+		FAAE4004264B6F6A00BE2604 /* font */ = {
+			isa = PBXGroup;
+			children = (
+				FAAE4032264B732B00BE2604 /* Poppins-Black.ttf */,
+				FAAE402F264B732B00BE2604 /* Poppins-BlackItalic.ttf */,
+				FAAE4031264B732B00BE2604 /* Poppins-Bold.ttf */,
+				FAAE402D264B732B00BE2604 /* Poppins-BoldItalic.ttf */,
+				FAAE4035264B732B00BE2604 /* Poppins-ExtraBold.ttf */,
+				FAAE4034264B732B00BE2604 /* Poppins-ExtraBoldItalic.ttf */,
+				FAAE4030264B732B00BE2604 /* Poppins-ExtraLight.ttf */,
+				FAAE4039264B732B00BE2604 /* Poppins-ExtraLightItalic.ttf */,
+				FAAE402A264B732B00BE2604 /* Poppins-Italic.ttf */,
+				FAAE402E264B732B00BE2604 /* Poppins-Light.ttf */,
+				FAAE4038264B732B00BE2604 /* Poppins-LightItalic.ttf */,
+				FAAE4037264B732B00BE2604 /* Poppins-Medium.ttf */,
+				FAAE402B264B732B00BE2604 /* Poppins-MediumItalic.ttf */,
+				FAAE4033264B732B00BE2604 /* Poppins-Regular.ttf */,
+				FAAE403B264B732B00BE2604 /* Poppins-SemiBold.ttf */,
+				FAAE4036264B732B00BE2604 /* Poppins-SemiBoldItalic.ttf */,
+				FAAE402C264B732B00BE2604 /* Poppins-Thin.ttf */,
+				FAAE403A264B732B00BE2604 /* Poppins-ThinItalic.ttf */,
+			);
+			path = font;
+			sourceTree = "<group>";
+		};
+		FAAE404E264B73FA00BE2604 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				FAAE406B264B9D7300BE2604 /* HomeViewController.swift */,
+				FAAE406C264B9D7300BE2604 /* HomeViewController.xib */,
+				FA6B8A06264D0B0900AEAA1C /* HomeAddViewController.swift */,
+				FA6B8A07264D0B0900AEAA1C /* HomeAddViewController.xib */,
+				FA3CF687264E17280042D92F /* HomeDetailViewController.swift */,
+				FA3CF688264E17280042D92F /* HomeDetailViewController.xib */,
+				FA509052264F53A300D12A8A /* HomeEditViewController.swift */,
+				FA509053264F53A300D12A8A /* HomeEditViewController.xib */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		FAAE404F264B810C00BE2604 /* MainTab */ = {
+			isa = PBXGroup;
+			children = (
+				FAAE4050264B816200BE2604 /* MainTabController.swift */,
+				FAAE4051264B816200BE2604 /* MainTabController.xib */,
+			);
+			path = MainTab;
+			sourceTree = "<group>";
+		};
+		FAAE4056264B88EB00BE2604 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				FAAE4057264B893400BE2604 /* ProfileViewController.swift */,
+				FAAE4058264B893400BE2604 /* ProfileViewController.xib */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		FAAE4070264BA57500BE2604 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				FAAE4082264BC16F00BE2604 /* HomeTableViewCell.swift */,
+				FAAE4083264BC16F00BE2604 /* HomeTableViewCell.xib */,
+				FAAE4088264BD2D200BE2604 /* HomeCollectionViewCell.swift */,
+				FAAE4089264BD2D200BE2604 /* HomeCollectionViewCell.xib */,
+				FA6B8A0C264D494C00AEAA1C /* DreamTableViewCell.swift */,
+				FA6B8A0D264D494C00AEAA1C /* DreamTableViewCell.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		FAAE407D264BB1A700BE2604 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FAAE407E264BB1FC00BE2604 /* UsageHistory.swift */,
+				FA6B8A11264D4D2300AEAA1C /* Dreams.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		FAAE408D264BE73200BE2604 /* Dream */ = {
+			isa = PBXGroup;
+			children = (
+				FAAE408F264BE75E00BE2604 /* DreamTableViewController.swift */,
+				FAAE4090264BE75E00BE2604 /* DreamTableViewController.xib */,
+				FA3CF68D264E62690042D92F /* DreamDetailViewController.swift */,
+				FA3CF68E264E62690042D92F /* DreamDetailViewController.xib */,
+				FA50904D264E814600D12A8A /* DreamAddViewController.swift */,
+				FA50904E264E814600D12A8A /* DreamAddViewController.xib */,
+				FA509064264FBA0000D12A8A /* DreamEditViewController.swift */,
+				FA509065264FBA0000D12A8A /* DreamEditViewController.xib */,
+			);
+			path = Dream;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -77,6 +274,7 @@
 				FAAE3FE5264B67B900BE2604 /* Sources */,
 				FAAE3FE6264B67B900BE2604 /* Frameworks */,
 				FAAE3FE7264B67B900BE2604 /* Resources */,
+				FAAE4001264B67E200BE2604 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -124,21 +322,79 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAAE408B264BD2D200BE2604 /* HomeCollectionViewCell.xib in Resources */,
+				FAAE4044264B733D00BE2604 /* Poppins-Light.ttf in Resources */,
+				FA509067264FBA0000D12A8A /* DreamEditViewController.xib in Resources */,
+				FA6B8A0F264D494C00AEAA1C /* DreamTableViewCell.xib in Resources */,
+				FAAE4042264B733800BE2604 /* Poppins-ExtraLight.ttf in Resources */,
+				FAAE406E264B9D7300BE2604 /* HomeViewController.xib in Resources */,
+				FAAE403C264B732E00BE2604 /* Poppins-Black.ttf in Resources */,
+				FAAE4092264BE75E00BE2604 /* DreamTableViewController.xib in Resources */,
+				FAAE405A264B893400BE2604 /* ProfileViewController.xib in Resources */,
+				FA509050264E814600D12A8A /* DreamAddViewController.xib in Resources */,
+				FA509055264F53A300D12A8A /* HomeEditViewController.xib in Resources */,
+				FAAE4048264B734200BE2604 /* Poppins-Regular.ttf in Resources */,
+				FAAE4040264B733400BE2604 /* Poppins-ExtraBold.ttf in Resources */,
+				FAAE404A264B734600BE2604 /* Poppins-SemiBold.ttf in Resources */,
+				FAAE4053264B816200BE2604 /* MainTabController.xib in Resources */,
+				FA3CF690264E62690042D92F /* DreamDetailViewController.xib in Resources */,
+				FA3CF68A264E17280042D92F /* HomeDetailViewController.xib in Resources */,
 				FAAE3FF9264B67BB00BE2604 /* LaunchScreen.storyboard in Resources */,
+				FAAE4046264B734000BE2604 /* Poppins-Medium.ttf in Resources */,
+				FA6B8A09264D0B0900AEAA1C /* HomeAddViewController.xib in Resources */,
+				FAAE4085264BC16F00BE2604 /* HomeTableViewCell.xib in Resources */,
 				FAAE3FF6264B67BB00BE2604 /* Assets.xcassets in Resources */,
-				FAAE3FF4264B67B900BE2604 /* Main.storyboard in Resources */,
+				FAAE404C264B734800BE2604 /* Poppins-Thin.ttf in Resources */,
+				FAAE403E264B733200BE2604 /* Poppins-Bold.ttf in Resources */,
+				FAA2D8C32650B86C00112D04 /* PopUpViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		FAAE4001264B67E200BE2604 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		FAAE3FE5264B67B900BE2604 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA3CF68F264E62690042D92F /* DreamDetailViewController.swift in Sources */,
+				FA6B8A08264D0B0900AEAA1C /* HomeAddViewController.swift in Sources */,
 				FAAE3FF1264B67B900BE2604 /* ViewController.swift in Sources */,
 				FAAE3FED264B67B900BE2604 /* AppDelegate.swift in Sources */,
+				FA6B8A0E264D494C00AEAA1C /* DreamTableViewCell.swift in Sources */,
+				FAAE4059264B893400BE2604 /* ProfileViewController.swift in Sources */,
+				FAAE4052264B816200BE2604 /* MainTabController.swift in Sources */,
+				FAAE407F264BB1FC00BE2604 /* UsageHistory.swift in Sources */,
+				FA50904F264E814600D12A8A /* DreamAddViewController.swift in Sources */,
+				FAAE408A264BD2D200BE2604 /* HomeCollectionViewCell.swift in Sources */,
+				FAAE4084264BC16F00BE2604 /* HomeTableViewCell.swift in Sources */,
+				FAAE4091264BE75E00BE2604 /* DreamTableViewController.swift in Sources */,
+				FA509066264FBA0000D12A8A /* DreamEditViewController.swift in Sources */,
+				FAAE406D264B9D7300BE2604 /* HomeViewController.swift in Sources */,
+				FAA2D8C22650B86C00112D04 /* PopUpViewController.swift in Sources */,
+				FA6B8A12264D4D2300AEAA1C /* Dreams.swift in Sources */,
+				FA509054264F53A300D12A8A /* HomeEditViewController.swift in Sources */,
+				FA3CF689264E17280042D92F /* HomeDetailViewController.swift in Sources */,
 				FAAE3FEF264B67B900BE2604 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -146,14 +402,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		FAAE3FF2264B67B900BE2604 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				FAAE3FF3264B67B900BE2604 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		FAAE3FF7264B67BB00BE2604 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

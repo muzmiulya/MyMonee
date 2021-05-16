@@ -9,9 +9,13 @@ import UIKit
 
 class HomeCollectionViewCell: UICollectionViewCell {
 
+    @IBOutlet weak var collectionView: UIView!
+    @IBOutlet weak var arrowDirection: UIImageView!
+    @IBOutlet weak var activityLabel: UILabel!
+    @IBOutlet weak var latestPriceLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        collectionView.layer.cornerRadius = 5
     }
 
 }

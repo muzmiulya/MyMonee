@@ -1,22 +1,97 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13142" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12042"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Poppins-SemiBold.ttf">
+            <string>Poppins-SemiBold</string>
+        </array>
+    </customFonts>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PopUpViewController" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PopUpViewController" customModule="MyMonee___Money_Saver" customModuleProvider="target">
             <connections>
+                <outlet property="mainView" destination="Zb1-xE-tT9" id="PLr-9j-EeH"/>
+                <outlet property="popUpCancelButton" destination="A8d-hl-E8J" id="e25-BA-Hxa"/>
+                <outlet property="popUpSaveButton" destination="G7O-8M-zeZ" id="n3m-EU-EKy"/>
+                <outlet property="popUpTextField" destination="WTj-31-GuO" id="OrN-0D-RLS"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zb1-xE-tT9">
+                    <rect key="frame" x="57" y="162" width="300" height="145"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Change Your Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N3q-z5-0D5">
+                            <rect key="frame" x="54.5" y="20" width="191.5" height="26"/>
+                            <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="22"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WTj-31-GuO">
+                            <rect key="frame" x="17" y="54" width="266" height="34"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A8d-hl-E8J">
+                            <rect key="frame" x="269" y="7" width="24" height="24"/>
+                            <state key="normal" image="Cross_Image"/>
+                            <connections>
+                                <action selector="closePopUpButton:" destination="-1" eventType="touchUpInside" id="03S-Dg-uhb"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G7O-8M-zeZ">
+                            <rect key="frame" x="17" y="100" width="266" height="30"/>
+                            <color key="backgroundColor" red="0.31372549020000001" green="0.41176470590000003" blue="0.72156862749999995" alpha="1" colorSpace="calibratedRGB"/>
+                            <state key="normal" title="Simpan">
+                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="savePopUpButton:" destination="-1" eventType="touchUpInside" id="rpq-Am-beb"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" red="0.94117647059999998" green="0.94901960780000005" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstItem="A8d-hl-E8J" firstAttribute="top" secondItem="Zb1-xE-tT9" secondAttribute="top" constant="7" id="Ckl-V6-IUg"/>
+                        <constraint firstItem="WTj-31-GuO" firstAttribute="centerX" secondItem="N3q-z5-0D5" secondAttribute="centerX" id="Er2-IW-9Qs"/>
+                        <constraint firstItem="G7O-8M-zeZ" firstAttribute="leading" secondItem="Zb1-xE-tT9" secondAttribute="leading" constant="17" id="G3x-Ki-gLT"/>
+                        <constraint firstAttribute="trailing" secondItem="WTj-31-GuO" secondAttribute="trailing" constant="17" id="JbB-0j-53o"/>
+                        <constraint firstAttribute="trailing" secondItem="A8d-hl-E8J" secondAttribute="trailing" constant="7" id="MMM-tS-ScQ"/>
+                        <constraint firstItem="N3q-z5-0D5" firstAttribute="top" secondItem="Zb1-xE-tT9" secondAttribute="top" constant="20" symbolic="YES" id="NXU-ue-5rh"/>
+                        <constraint firstItem="G7O-8M-zeZ" firstAttribute="centerX" secondItem="WTj-31-GuO" secondAttribute="centerX" id="RuY-en-AxX"/>
+                        <constraint firstItem="G7O-8M-zeZ" firstAttribute="top" secondItem="WTj-31-GuO" secondAttribute="bottom" constant="12" id="cmc-B0-toR"/>
+                        <constraint firstAttribute="height" constant="145" id="gIc-87-g62"/>
+                        <constraint firstItem="WTj-31-GuO" firstAttribute="leading" secondItem="Zb1-xE-tT9" secondAttribute="leading" constant="17" id="hua-FA-2Pp"/>
+                        <constraint firstAttribute="trailing" secondItem="G7O-8M-zeZ" secondAttribute="trailing" constant="17" id="iPr-RE-CaK"/>
+                        <constraint firstItem="WTj-31-GuO" firstAttribute="top" secondItem="N3q-z5-0D5" secondAttribute="bottom" constant="8" symbolic="YES" id="jvv-0S-tw4"/>
+                        <constraint firstItem="N3q-z5-0D5" firstAttribute="centerX" secondItem="Zb1-xE-tT9" secondAttribute="centerX" id="wsy-p9-ReB"/>
+                    </constraints>
+                </view>
+            </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Zb1-xE-tT9" secondAttribute="trailing" constant="57" id="0qg-Uc-I9d"/>
+                <constraint firstItem="Zb1-xE-tT9" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="118" id="TjV-fJ-psA"/>
+                <constraint firstItem="Zb1-xE-tT9" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="57" id="X5d-rQ-b5j"/>
+                <constraint firstItem="Zb1-xE-tT9" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="wCC-Xr-LWr"/>
+            </constraints>
+            <point key="canvasLocation" x="-149.27536231884059" y="71.651785714285708"/>
         </view>
     </objects>
+    <resources>
+        <image name="Cross_Image" width="24" height="24"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>
