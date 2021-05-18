@@ -28,8 +28,8 @@ struct CountUsage {
 }
 
 var latestUsage: [CountUsage] = [
-    CountUsage(usageName: "Uang Masuk", usagePrice: 1250000, status: true),
-    CountUsage(usageName: "Uang Keluar", usagePrice: 256000, status: false)
+    CountUsage(usageName: "Uang Masuk", usagePrice: 0, status: true),
+    CountUsage(usageName: "Uang Keluar", usagePrice: 0, status: false)
 ]
 
 class CountSpending: LatestCount {

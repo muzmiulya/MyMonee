@@ -17,6 +17,7 @@ class DreamTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         dreamMainView.layer.cornerRadius = 5
+        self.selectionStyle = .none
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

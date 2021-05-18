@@ -35,19 +35,18 @@ class HomeDetailViewController: UIViewController {
         if status == true {
             self.incomeOrOutcome.image = UIImage(named: "Arrow_Up")
             self.usageTypeLabel.text = "Pemasukan"
-            self.usagePriceLabel.text = "+Rp \(usagePrice)"
+            self.usagePriceLabel.text = "+Rp \(convertIntToCurrency(value:usagePrice))"
             self.usagePriceLabel.textColor = UIColor(red: 33/256, green: 150/256, blue: 83/256, alpha: 1.0)
         } else {
             self.incomeOrOutcome.image = UIImage(named: "Arrow_Down")
             self.usageTypeLabel.text = "Pengeluaran"
-            self.usagePriceLabel.text = "-Rp \(usagePrice)"
+            self.usagePriceLabel.text = "-Rp \(convertIntToCurrency(value:usagePrice))"
             self.usagePriceLabel.textColor = UIColor(red: 235/256, green: 87/256, blue: 87/256, alpha: 1.0)
         }
     }
 
     @IBAction func backButton(_ sender: Any) {
-        let viewController = HomeViewController(nibName: String(describing: HomeViewController.self), bundle: nil)
-        self.navigationController?.pushViewController(viewController, animated: true)
+        self.navigationController?.popToRootViewController(animated: true)
     }
     @IBAction func editButton(_ sender: Any) {
         let viewController = HomeEditViewController(nibName: String(describing: HomeEditViewController.self), bundle: nil)
@@ -55,6 +54,7 @@ class HomeDetailViewController: UIViewController {
         viewController.indexRow = indexRow
         viewController.usagePrice = usagePrice
         viewController.utilization = status
+//        viewController.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(viewController, animated: true)
     }
 }

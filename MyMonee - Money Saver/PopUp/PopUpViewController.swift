@@ -36,6 +36,7 @@ class PopUpViewController: UIViewController {
         let nameText = popUpTextField.text ?? "Your Name"
         passName.newName(name: nameText)
         let popOverVC = PopUpViewController(nibName: String(describing: PopUpViewController.self), bundle: nil)
+        NotificationCenter.default.post(name: Notification.Name("changeName"), object: nil, userInfo: ["name": nameText])
         popOverVC.willMove(toParent: nil)
         popOverVC.view.removeFromSuperview()
         popOverVC.removeFromParent()

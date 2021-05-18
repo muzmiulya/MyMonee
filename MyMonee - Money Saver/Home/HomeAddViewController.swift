@@ -36,8 +36,7 @@ class HomeAddViewController: UIViewController, UITextFieldDelegate {
         buttonSave.isEnabled = false
     }
     @IBAction func buttonBack(_ sender: Any) {
-        let viewController = HomeViewController(nibName: String(describing: HomeViewController.self), bundle: nil)
-        self.navigationController?.pushViewController(viewController, animated: true)
+        self.navigationController?.popToRootViewController(animated: true)
     }
     @IBAction func tapped(_ gestureRecognizer: UITapGestureRecognizer) {
         buttonView.layer.borderWidth = 3
@@ -64,8 +63,7 @@ class HomeAddViewController: UIViewController, UITextFieldDelegate {
         let timestamp = DateFormatter.localizedString(from: Date(), dateStyle: .medium, timeStyle: .short)
         let usage = UsageHistory(ids: ids, usageName: title, usagePrice: amount, usageDate: timestamp, status: utilization)
         Usage(usage: usage).addNewUsage()
-        let viewController = HomeViewController(nibName: String(describing: HomeViewController.self), bundle: nil)
-        self.navigationController?.pushViewController(viewController, animated: true)
+        self.navigationController?.popToRootViewController(animated: true)
     }
     func randomString(length: Int) -> String {
       let letters = "0123456789"

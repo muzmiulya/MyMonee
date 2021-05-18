@@ -25,7 +25,29 @@ class DreamEditViewController: UIViewController, UITextFieldDelegate {
         eraseDreamButton.layer.borderColor = CGColor(red: 235/256, green: 87/256, blue: 87/256, alpha: 1.0)
         titleEdit.text = titles
         priceGoalEdit.text = "\(priceGoal)"
+//        setupAddTargetIsNotEmptyTextFields()
+//        self.renewDreamButton.layer.backgroundColor = UIColor(red: 0.741, green: 0.741, blue: 0.741, alpha: 1).cgColor
     }
+//    func setupAddTargetIsNotEmptyTextFields() {
+//        renewDreamButton.isEnabled = false
+//        titleEdit.addTarget(self, action: #selector(textFieldsIsNotEmpty),
+//                                    for: .editingChanged)
+//        priceGoalEdit.addTarget(self, action: #selector(textFieldsIsNotEmpty),
+//                                    for: .editingChanged)
+//       }
+//    @objc func textFieldsIsNotEmpty(sender: UITextField) {
+//        sender.text = sender.text?.trimmingCharacters(in: .whitespaces)
+//        guard
+//          let name = titleEdit.text, !name.isEmpty,
+//          let email = priceGoalEdit.text, !email.isEmpty
+//          else
+//        {
+//            self.renewDreamButton.isEnabled = false
+//            return
+//        }
+//        renewDreamButton.isEnabled = true
+//        renewDreamButton.layer.backgroundColor = UIColor(red: 0.314, green: 0.412, blue: 0.722, alpha: 1).cgColor
+//    }
     @IBAction func backButton(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
@@ -40,15 +62,13 @@ class DreamEditViewController: UIViewController, UITextFieldDelegate {
         let priceGoal = Int(priceGoalEdit.text ?? "") ?? 0
         dreams[indexRow].dreamTitle = title
         dreams[indexRow].dreamPriceGoal = priceGoal
-        let viewController = DreamTableViewController(nibName: String(describing: DreamTableViewController.self), bundle: nil)
-        self.navigationController?.pushViewController(viewController, animated: true)
+        self.navigationController?.popToRootViewController(animated: true)
     }
     @IBAction func deleteButton(_ sender: Any) {
         let alert = UIAlertController (title: "Apakah anda yakin ingin menghapus Impian?", message: "", preferredStyle: UIAlertController.Style.alert)
         let deleteAction = UIAlertAction(title: "Hapus", style: UIAlertAction.Style.default) {_ in
             dreams.remove(at: self.indexRow)
-            let viewController = DreamTableViewController(nibName: String(describing: DreamTableViewController.self), bundle: nil)
-            self.navigationController?.pushViewController(viewController, animated: true)
+            self.navigationController?.popToRootViewController(animated: true)
             }
         alert.addAction(deleteAction)
         alert.addAction(UIAlertAction(title: "Batal", style: UIAlertAction.Style.cancel, handler: nil))

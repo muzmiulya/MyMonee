@@ -191,15 +191,14 @@
                             <color key="backgroundColor" red="0.94117647059999998" green="0.94901960780000005" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstItem="Vbl-XT-pDq" firstAttribute="top" secondItem="69s-Wi-6Pr" secondAttribute="bottom" constant="24" id="HnE-A4-c3B"/>
-                                <constraint firstItem="3b6-x6-m6O" firstAttribute="leading" secondItem="58g-Ec-OhL" secondAttribute="leading" constant="178" id="JH0-Ua-USd"/>
                                 <constraint firstItem="WRH-Ua-gPu" firstAttribute="top" secondItem="3b6-x6-m6O" secondAttribute="bottom" constant="24" id="Sn7-rz-jUt"/>
                                 <constraint firstAttribute="trailing" secondItem="69s-Wi-6Pr" secondAttribute="trailing" constant="17" id="T0c-k1-Pg7"/>
                                 <constraint firstAttribute="trailing" secondItem="Vbl-XT-pDq" secondAttribute="trailing" id="Xpc-sK-DCH"/>
                                 <constraint firstAttribute="height" constant="896" id="lga-9B-1hr"/>
                                 <constraint firstAttribute="bottom" secondItem="Vbl-XT-pDq" secondAttribute="bottom" id="ndD-QV-ZxS"/>
+                                <constraint firstItem="3b6-x6-m6O" firstAttribute="centerX" secondItem="Vbl-XT-pDq" secondAttribute="centerX" id="qQI-jd-QnV"/>
                                 <constraint firstItem="Vbl-XT-pDq" firstAttribute="leading" secondItem="58g-Ec-OhL" secondAttribute="leading" id="sIz-21-pYL"/>
                                 <constraint firstItem="69s-Wi-6Pr" firstAttribute="top" secondItem="58g-Ec-OhL" secondAttribute="top" constant="48" id="sYf-s9-CUy"/>
-                                <constraint firstAttribute="trailing" secondItem="3b6-x6-m6O" secondAttribute="trailing" constant="178" id="wT4-yg-cNh"/>
                                 <constraint firstItem="3b6-x6-m6O" firstAttribute="top" secondItem="58g-Ec-OhL" secondAttribute="top" constant="80" id="ypa-23-Cwb"/>
                             </constraints>
                         </view>

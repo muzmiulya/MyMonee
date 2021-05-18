@@ -83,8 +83,8 @@ class HomeEditViewController: UIViewController, UITextFieldDelegate {
         usageHistory[indexRow].usagePrice = amount
         usageHistory[indexRow].usageDate = timestamp
         usageHistory[indexRow].status = utilization
-        let viewController = HomeViewController(nibName: String(describing: HomeViewController.self), bundle: nil)
-        self.navigationController?.pushViewController(viewController, animated: true)
+//        let viewController = HomeViewController(nibName: String(describing: HomeViewController.self), bundle: nil)
+        self.navigationController?.popToRootViewController(animated: true)
     }
     @IBAction func deleteButton(_ sender: Any) {
         let alert = UIAlertController (title: "Apakah anda yakin ingin menghapus Riwayat Penggunaan?", message: "", preferredStyle: UIAlertController.Style.alert)

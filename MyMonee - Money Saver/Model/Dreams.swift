@@ -22,9 +22,9 @@ struct Dreams {
     }
 }
 var dreams: [Dreams] = [
-    Dreams(id: "0", dreamTitle: "Membeli Mobil", dreamPriceGoal: 200000000),
-    Dreams(id: "1", dreamTitle: "Membeli Airpods baru", dreamPriceGoal: 1500000),
-    Dreams(id: "2", dreamTitle: "Membeli Sepatu Adidas", dreamPriceGoal: 500000)
+//    Dreams(id: "0", dreamTitle: "Membeli Mobil", dreamPriceGoal: 200000000),
+//    Dreams(id: "1", dreamTitle: "Membeli Airpods baru", dreamPriceGoal: 1500000),
+//    Dreams(id: "2", dreamTitle: "Membeli Sepatu Adidas", dreamPriceGoal: 500000)
 ]
 
 class AddDream {

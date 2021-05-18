@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Poppins-Medium.ttf">
+            <string>Poppins-Medium</string>
+        </array>
+        <array key="Poppins-SemiBold.ttf">
+            <string>Poppins-SemiBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeDataNotFound" customModule="MyMonee___Money_Saver" customModuleProvider="target">
+            <connections>
+                <outlet property="buttonAdd" destination="3om-eA-uBy" id="Wxf-R0-8t9"/>
+                <outlet property="mainView" destination="iN0-l3-epB" id="7Lc-2n-hZ7"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="448"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v3D-8m-y5P">
+                    <rect key="frame" x="67" y="156" width="280.5" height="56"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="56" id="0A5-gS-nRs"/>
+                    </constraints>
+                    <string key="text">Data kamu kosong,
+Yuk mulai buat Catatan kamu!</string>
+                    <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="18"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3om-eA-uBy">
+                    <rect key="frame" x="86" y="236" width="242" height="43"/>
+                    <color key="backgroundColor" red="0.31372549020000001" green="0.41176470590000003" blue="0.72156862749999995" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="43" id="lZB-RJ-gkE"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="14"/>
+                    <state key="normal" title="Tambah Penggunaan">
+                        <color key="titleColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="buttonAction:" destination="-1" eventType="touchUpInside" id="fhX-j1-s92"/>
+                    </connections>
+                </button>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="3om-eA-uBy" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="86" id="Cvk-bV-Bc8"/>
+                <constraint firstItem="3om-eA-uBy" firstAttribute="top" secondItem="v3D-8m-y5P" secondAttribute="bottom" constant="24" id="SIr-L0-JrE"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="3om-eA-uBy" secondAttribute="trailing" constant="86" id="We5-zI-eOI"/>
+                <constraint firstItem="v3D-8m-y5P" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="bJm-fp-13O"/>
+                <constraint firstItem="v3D-8m-y5P" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="112" id="dVa-t1-bpG"/>
+                <constraint firstItem="3om-eA-uBy" firstAttribute="centerX" secondItem="v3D-8m-y5P" secondAttribute="centerX" id="yEe-1V-RnO"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="-26" y="-49"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

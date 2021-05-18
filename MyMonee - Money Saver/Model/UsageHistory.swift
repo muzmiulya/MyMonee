@@ -25,8 +25,8 @@ struct UsageHistory {
     }
 }
 var usageHistory: [UsageHistory] = [
-    UsageHistory(ids: "fe432", usageName: "Bayar Listrik", usagePrice: 256000, usageDate: "Feb 02 2021 at 07:30 AM", status: false),
-    UsageHistory(ids: "kg092", usageName: "Gaji Februari", usagePrice: 1250000, usageDate: "April 15 2021 at 10:31 AM", status: true)
+//    UsageHistory(ids: "fe432", usageName: "Bayar Listrik", usagePrice: 256000, usageDate: "Feb 02 2021 at 07:30 AM", status: false),
+//    UsageHistory(ids: "kg092", usageName: "Gaji Februari", usagePrice: 1250000, usageDate: "April 15 2021 at 10:31 AM", status: true)
 ]
 
 class Usage {

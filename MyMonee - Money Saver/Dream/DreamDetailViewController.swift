@@ -35,11 +35,11 @@ class DreamDetailViewController: UIViewController {
         backButton.layer.borderWidth = 2
         backButton.layer.borderColor = CGColor(red: 80/256, green: 105/256, blue: 184/256, alpha: 1.0)
         self.dreamTitle.text = titles
-        self.dreamPrice.text = "Rp \(goal)"
+        self.dreamPrice.text = "Rp \(convertIntToCurrency(value:goal))"
         self.dreamProgress.progress = progress
         self.dreamPercentage.text = "\(String(format: "%.2f", progress*100))%"
-        self.dreamMoney.text = "IDR \(money)"
-        self.dreamGoal.text = "IDR \(goal)"
+        self.dreamMoney.text = "IDR \(convertIntToCurrency(value:money))"
+        self.dreamGoal.text = "IDR \(convertIntToCurrency(value:goal))"
         print(progress)
         if progress >= 1.0 {
             confirmButton.isEnabled = true
@@ -50,14 +50,14 @@ class DreamDetailViewController: UIViewController {
     }
 
     @IBAction func backButton(_ sender: Any) {
-        let viewController = DreamTableViewController(nibName: String(describing: DreamTableViewController.self), bundle: nil)
-        self.navigationController?.pushViewController(viewController, animated: true)
+        self.navigationController?.popToRootViewController(animated: true)
     }
     @IBAction func editButton(_ sender: Any) {
         let viewController = DreamEditViewController(nibName: String(describing: DreamEditViewController.self), bundle: nil)
         viewController.titles = titles
         viewController.priceGoal = goal
         viewController.indexRow = indexRow
+//        viewController.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(viewController, animated: true)
     }
     @IBAction func dreamReachedButton(_ sender: Any) {
@@ -70,14 +70,12 @@ class DreamDetailViewController: UIViewController {
             let usage = UsageHistory(ids: ids, usageName: title, usagePrice: amount, usageDate: timestamp, status: false)
             Usage(usage: usage).addNewUsage()
             dreams.remove(at: self.indexRow)
-            let viewController = DreamTableViewController(nibName: String(describing: DreamTableViewController.self), bundle: nil)
-            self.navigationController?.pushViewController(viewController, animated: true)
+            self.navigationController?.popToRootViewController(animated: true)
             }
         alert.addAction(deleteAction)
         alert.addAction(UIAlertAction(title: "Batal", style: UIAlertAction.Style.cancel, handler: nil))
         self.present(alert, animated: true, completion: nil)
-        let viewController = DreamTableViewController(nibName: String(describing: DreamTableViewController.self), bundle: nil)
-        self.navigationController?.pushViewController(viewController, animated: true)
+        self.navigationController?.popToRootViewController(animated: true)
     }
     func randomString(length: Int) -> String {
       let letters = "0123456789"

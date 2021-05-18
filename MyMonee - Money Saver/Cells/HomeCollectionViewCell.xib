@@ -31,39 +31,41 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Arrow_Up_Single" translatesAutoresizingMaskIntoConstraints="NO" id="7a5-iY-XSH">
                                 <rect key="frame" x="8" y="15.5" width="16" height="16"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Uang Masuk" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u4s-Y5-7xx">
-                                <rect key="frame" x="32" y="5" width="76" height="17"/>
-                                <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="12"/>
-                                <color key="textColor" red="0.50980392156862742" green="0.50980392156862742" blue="0.50980392156862742" alpha="0.84705882352941175" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rp 1.250.000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eEF-xz-j7G">
-                                <rect key="frame" x="32" y="24" width="67" height="16"/>
-                                <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="11"/>
-                                <color key="textColor" red="0.31372549019607843" green="0.41176470588235292" blue="0.72156862745098038" alpha="0.84705882352941175" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="5Wa-Po-daH">
+                                <rect key="frame" x="32" y="5" width="75.5" height="37.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Uang Masuk" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u4s-Y5-7xx">
+                                        <rect key="frame" x="0.0" y="0.0" width="75.5" height="17"/>
+                                        <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="12"/>
+                                        <color key="textColor" red="0.50980392156862742" green="0.50980392156862742" blue="0.50980392156862742" alpha="0.84705882352941175" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rp 1.250.000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eEF-xz-j7G">
+                                        <rect key="frame" x="0.0" y="22" width="75.5" height="15.5"/>
+                                        <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="11"/>
+                                        <color key="textColor" red="0.31372549019607843" green="0.41176470588235292" blue="0.72156862745098038" alpha="0.84705882352941175" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="u4s-Y5-7xx" firstAttribute="leading" secondItem="eEF-xz-j7G" secondAttribute="leading" id="6d8-zB-6cz"/>
-                            <constraint firstItem="eEF-xz-j7G" firstAttribute="top" secondItem="u4s-Y5-7xx" secondAttribute="bottom" constant="2" id="74c-Sn-jZK"/>
-                            <constraint firstItem="7a5-iY-XSH" firstAttribute="leading" secondItem="tBN-oT-PiL" secondAttribute="leading" constant="8" id="V2B-bt-MLA"/>
-                            <constraint firstItem="7a5-iY-XSH" firstAttribute="top" secondItem="tBN-oT-PiL" secondAttribute="top" constant="15.5" id="fx4-CH-a78"/>
+                            <constraint firstItem="7a5-iY-XSH" firstAttribute="centerY" secondItem="tBN-oT-PiL" secondAttribute="centerY" id="47p-Yn-pAa"/>
+                            <constraint firstItem="7a5-iY-XSH" firstAttribute="leading" secondItem="tBN-oT-PiL" secondAttribute="leading" constant="8" id="H51-3D-BQ9"/>
+                            <constraint firstItem="5Wa-Po-daH" firstAttribute="centerY" secondItem="7a5-iY-XSH" secondAttribute="centerY" id="Plk-K6-Cxx"/>
                             <constraint firstAttribute="height" constant="47" id="iWI-ez-HTZ"/>
-                            <constraint firstItem="eEF-xz-j7G" firstAttribute="top" secondItem="u4s-Y5-7xx" secondAttribute="bottom" constant="2" id="jPA-D4-VGD"/>
-                            <constraint firstItem="u4s-Y5-7xx" firstAttribute="leading" secondItem="7a5-iY-XSH" secondAttribute="trailing" constant="8" symbolic="YES" id="oJ2-uX-UC4"/>
-                            <constraint firstItem="u4s-Y5-7xx" firstAttribute="top" secondItem="tBN-oT-PiL" secondAttribute="top" constant="5" id="tWX-pj-bda"/>
+                            <constraint firstItem="5Wa-Po-daH" firstAttribute="leading" secondItem="7a5-iY-XSH" secondAttribute="trailing" constant="8" id="yw1-48-UgN"/>
                         </constraints>
                     </view>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
-                <constraint firstItem="tBN-oT-PiL" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="1rV-DB-Vqk"/>
-                <constraint firstAttribute="trailing" secondItem="tBN-oT-PiL" secondAttribute="trailing" id="DQ0-YD-3pC"/>
-                <constraint firstAttribute="bottom" secondItem="tBN-oT-PiL" secondAttribute="bottom" id="IK4-w3-54T"/>
-                <constraint firstItem="tBN-oT-PiL" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="hVu-Nd-o44"/>
+                <constraint firstItem="tBN-oT-PiL" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="3Cq-OM-mGW"/>
+                <constraint firstAttribute="bottom" secondItem="tBN-oT-PiL" secondAttribute="bottom" id="Zcl-9H-gZh"/>
+                <constraint firstAttribute="trailing" secondItem="tBN-oT-PiL" secondAttribute="trailing" id="qe7-Zo-opC"/>
+                <constraint firstItem="tBN-oT-PiL" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="yz6-WS-dny"/>
             </constraints>
             <size key="customSize" width="175" height="50"/>
             <connections>
@@ -72,7 +74,7 @@
                 <outlet property="collectionView" destination="tBN-oT-PiL" id="Jyc-PH-k9x"/>
                 <outlet property="latestPriceLabel" destination="eEF-xz-j7G" id="GaK-pg-AY9"/>
             </connections>
-            <point key="canvasLocation" x="47.10144927536232" y="69.308035714285708"/>
+            <point key="canvasLocation" x="47.10144927536232" y="64.620535714285708"/>
         </collectionViewCell>
     </objects>
     <resources>

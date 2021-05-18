@@ -158,8 +158,8 @@
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Arrow_Down" translatesAutoresizingMaskIntoConstraints="NO" id="ilX-v7-tWj">
                                     <rect key="frame" x="178" y="80" width="58" height="58"/>
                                     <constraints>
+                                        <constraint firstAttribute="width" constant="58" id="A3M-wj-1Kx"/>
                                         <constraint firstAttribute="height" constant="58" id="SxF-IR-s2g"/>
-                                        <constraint firstAttribute="width" constant="58" id="c9D-mA-p2H"/>
                                     </constraints>
                                 </imageView>
                             </subviews>
@@ -170,11 +170,10 @@
                                 <constraint firstAttribute="trailing" secondItem="qfL-2c-OpZ" secondAttribute="trailing" constant="17" id="9n1-ly-Pik"/>
                                 <constraint firstAttribute="height" constant="896" id="BW5-Kd-KK7"/>
                                 <constraint firstItem="ilX-v7-tWj" firstAttribute="top" secondItem="ZuB-nb-L6a" secondAttribute="top" constant="80" id="NRj-oh-tS0"/>
+                                <constraint firstItem="ilX-v7-tWj" firstAttribute="centerX" secondItem="1fl-Rl-VlM" secondAttribute="centerX" id="Txb-pa-7h8"/>
                                 <constraint firstItem="1fl-Rl-VlM" firstAttribute="leading" secondItem="ZuB-nb-L6a" secondAttribute="leading" id="Vry-TO-t9P"/>
                                 <constraint firstItem="krz-rO-1Rr" firstAttribute="top" secondItem="ilX-v7-tWj" secondAttribute="bottom" constant="24" id="Z3k-1B-4VP"/>
                                 <constraint firstAttribute="bottom" secondItem="1fl-Rl-VlM" secondAttribute="bottom" id="ciV-FT-D8Q"/>
-                                <constraint firstAttribute="trailing" secondItem="ilX-v7-tWj" secondAttribute="trailing" constant="178" id="gIM-qe-0O5"/>
-                                <constraint firstItem="ilX-v7-tWj" firstAttribute="leading" secondItem="ZuB-nb-L6a" secondAttribute="leading" constant="178" id="jZD-Dc-WVQ"/>
                                 <constraint firstItem="1fl-Rl-VlM" firstAttribute="top" secondItem="qfL-2c-OpZ" secondAttribute="bottom" constant="24" id="o6y-Ol-UvU"/>
                             </constraints>
                         </view>

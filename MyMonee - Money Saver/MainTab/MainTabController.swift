@@ -18,8 +18,8 @@ class MainTabController: UITabBarController {
         let homeImageSelected = UIImage(named: "Home_Selected")?.withRenderingMode(.alwaysOriginal)
         homeTab.setNavigationBarHidden(true, animated: false)
         homeTab.tabBarItem = UITabBarItem(title: "Beranda", image: homeImage, selectedImage: homeImageSelected)
-        homeTab.tabBarItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.black], for: .selected)
-        homeTab.tabBarItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.lightGray], for: .normal)
+        homeTab.tabBarItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor(red: 0.314, green: 0.412, blue: 0.722, alpha: 1)], for: .selected)
+        homeTab.tabBarItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor(red: 0.51, green: 0.51, blue: 0.51, alpha: 1)], for: .normal)
         homeTab.tabBarItem.tag = 0
         let dream = DreamTableViewController(nibName: String(describing: DreamTableViewController.self), bundle: nil)
         let dreamTab = UINavigationController(rootViewController: dream)
@@ -27,8 +27,8 @@ class MainTabController: UITabBarController {
         let dreamImageSelected = UIImage(named: "Dream_Selected")?.withRenderingMode(.alwaysOriginal)
         dreamTab.setNavigationBarHidden(true, animated: false)
         dreamTab.tabBarItem = UITabBarItem(title: "Impian", image: dreamImage, selectedImage: dreamImageSelected)
-        dreamTab.tabBarItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.black], for: .selected)
-        dreamTab.tabBarItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.lightGray], for: .normal)
+        dreamTab.tabBarItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor(red: 0.314, green: 0.412, blue: 0.722, alpha: 1)], for: .selected)
+        dreamTab.tabBarItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor(red: 0.51, green: 0.51, blue: 0.51, alpha: 1)], for: .normal)
         dreamTab.tabBarItem.tag = 1
         let profile = ProfileViewController(nibName: String(describing: ProfileViewController.self), bundle: nil)
         let profileTab = UINavigationController(rootViewController: profile)
@@ -36,8 +36,8 @@ class MainTabController: UITabBarController {
         let profileImageSelected = UIImage(named: "Profile_Selected")?.withRenderingMode(.alwaysOriginal)
         profileTab.setNavigationBarHidden(true, animated: false)
         profileTab.tabBarItem = UITabBarItem(title: "Profil", image: profileImage, selectedImage: profileImageSelected)
-        profileTab.tabBarItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.black], for: .selected)
-        profileTab.tabBarItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.lightGray], for: .normal)
+        profileTab.tabBarItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor(red: 0.314, green: 0.412, blue: 0.722, alpha: 1)], for: .selected)
+        profileTab.tabBarItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor(red: 0.51, green: 0.51, blue: 0.51, alpha: 1)], for: .normal)
         profileTab.tabBarItem.tag = 2
         self.viewControllers = [homeTab, dreamTab, profileTab]
     }
