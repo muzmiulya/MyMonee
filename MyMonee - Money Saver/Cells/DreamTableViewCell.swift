@@ -7,22 +7,32 @@
 
 import UIKit
 
-class DreamTableViewCell: UITableViewCell {
+protocol Confirmation {
+    func dreamComplete(_ tag: Int)
+    func dreamDelete(_ tag: Int)
+}
 
+class DreamTableViewCell: UITableViewCell {
+    var delegateConfirm: Confirmation?
     @IBOutlet weak var dreamMainView: UIView!
     @IBOutlet weak var dreamTitleLabel: UILabel!
     @IBOutlet weak var dreamPriceLabel: UILabel!
     @IBOutlet weak var dreamPriceGoalLabel: UILabel!
     @IBOutlet weak var dreamProgressView: UIProgressView!
+    @IBOutlet weak var dreamComplete: UIButton!
+    @IBOutlet weak var deleteDream: UIButton!
     override func awakeFromNib() {
         super.awakeFromNib()
         dreamMainView.layer.cornerRadius = 5
         self.selectionStyle = .none
     }
-
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    }
+    @IBAction func achieveDream(_ sender: UIButton) {
+        self.delegateConfirm?.dreamComplete(sender.tag)
+    }
+    @IBAction func deleteDreamAction(_ sender: UIButton) {
+        self.delegateConfirm?.dreamDelete(sender.tag)
     }
 }

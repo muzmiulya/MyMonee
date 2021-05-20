@@ -7,6 +7,12 @@
 
 import UIKit
 
+protocol ProfilePage {
+    func editAction(_ sender: Any)
+    func doneAction(_ sender: Any)
+    func editNameAction(_ sender: Any)
+}
+
 class ProfileViewController: UIViewController, UIImagePickerControllerDelegate & UINavigationControllerDelegate {
 
     @IBOutlet weak var profilePicture: UIImageView!
@@ -31,6 +37,24 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate &
         self.profilePicture.layer.cornerRadius = profilePicture.frame.size.width / 2
         self.profilePicture.layer.masksToBounds = true
     }
+    func imagePickerController(_ picker: UIImagePickerController,
+                               didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+            if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+                profilePicture.image = pickedImage
+                profilePicture.contentMode = .scaleAspectFill
+            }
+        dismiss(animated: true, completion: nil)
+    }
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+            dismiss(animated: true, completion: nil)
+    }
+}
+extension ProfileViewController: PassNameDelegate {
+    func newName(name: String) {
+        self.nameLabel.text = name
+    }
+}
+extension ProfileViewController: ProfilePage {
     @IBAction func editAction(_ sender: Any) {
         editButton.isHidden = !editButton.isHidden
         editPictureButton.isHidden = false
@@ -48,20 +72,5 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate &
         popOverVC.view.frame = self.view.frame
         self.view.addSubview(popOverVC.view)
         popOverVC.didMove(toParent: self)
-    }
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-            if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-                profilePicture.image = pickedImage
-                profilePicture.contentMode = .scaleAspectFill
-            }
-            dismiss(animated: true, completion: nil)
-        }
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-            dismiss(animated: true, completion: nil)
-    }
-}
-extension ProfileViewController: PassNameDelegate {
-    func newName(name: String) {
-        self.nameLabel.text = name
     }
 }

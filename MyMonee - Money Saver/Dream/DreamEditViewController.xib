@@ -21,6 +21,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DreamEditViewController" customModule="MyMonee___Money_Saver" customModuleProvider="target">
             <connections>
+                <outlet property="buttonEdit" destination="56L-MH-CMw" id="bux-bD-BDc"/>
                 <outlet property="eraseDreamButton" destination="742-vz-Ocg" id="7qJ-u9-Vid"/>
                 <outlet property="priceGoalEdit" destination="agK-i4-wGz" id="a3X-Z9-fhe"/>
                 <outlet property="renewDreamButton" destination="56L-MH-CMw" id="hcv-9y-1Mp"/>

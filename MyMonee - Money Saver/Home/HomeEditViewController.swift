@@ -7,6 +7,12 @@
 
 import UIKit
 
+protocol EditHome {
+    func backButton(_ sender: Any)
+    func editButton(_ sender: Any)
+    func deleteButton(_ sender: Any)
+}
+
 class HomeEditViewController: UIViewController, UITextFieldDelegate {
     var usageName: String = ""
     var usagePrice: Int = 0
@@ -21,6 +27,7 @@ class HomeEditViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var buttonDelete: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
+        titleEdit.delegate = self
         amountEdit.delegate = self
         buttonView.layer.shadowColor = UIColor.black.cgColor
         buttonView.layer.shadowOpacity = 0.15
@@ -47,10 +54,7 @@ class HomeEditViewController: UIViewController, UITextFieldDelegate {
         } else {
             self.tappedOut(tapOut)
         }
-    }
-    @IBAction func backButton(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
-    }
+    }   
     @IBAction func tapped(_ gestureRecognizer: UITapGestureRecognizer) {
         buttonView.layer.borderWidth = 3
         buttonView.layer.borderColor = UIColor.blue.cgColor
@@ -69,29 +73,48 @@ class HomeEditViewController: UIViewController, UITextFieldDelegate {
         buttonRenew.isEnabled = true
         buttonRenew.layer.backgroundColor = CGColor(red: 80/256, green: 105/256, blue: 184/256, alpha: 1.0)
         }
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        guard CharacterSet(charactersIn: "0123456789").isSuperset(of: CharacterSet(charactersIn: string)) else {
-            return false
+    func textField(_ textField: UITextField,
+                   shouldChangeCharactersIn range: NSRange,
+                   replacementString string: String) -> Bool {
+        if textField == amountEdit {
+            guard CharacterSet(charactersIn: "0123456789").isSuperset(of: CharacterSet(charactersIn: string))
+            else {
+                return false
+            }
         }
         return true
     }
+}
+extension HomeEditViewController: EditHome {
+    @IBAction func backButton(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
     @IBAction func editButton(_ sender: Any) {
-        let title = titleEdit.text ?? ""
-        let amount = Int(amountEdit.text ?? "") ?? 0
-        let timestamp = DateFormatter.localizedString(from: Date(), dateStyle: .medium, timeStyle: .short)
-        usageHistory[indexRow].usageName = title
-        usageHistory[indexRow].usagePrice = amount
-        usageHistory[indexRow].usageDate = timestamp
-        usageHistory[indexRow].status = utilization
-//        let viewController = HomeViewController(nibName: String(describing: HomeViewController.self), bundle: nil)
-        self.navigationController?.popToRootViewController(animated: true)
+        if titleEdit.text?.isEmpty == true || amountEdit.text?.isEmpty == true {
+            let alert = UIAlertController(title: "Judul dan Jumlah pemakaian harus diisi!",
+                                           message: "",
+                                           preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.cancel, handler: nil))
+            return self.present(alert, animated: true, completion: nil)
+        } else {
+            let title = titleEdit.text ?? ""
+            let amount = Int(amountEdit.text ?? "") ?? 0
+//            let timestamp = Date().toString(format: "dd MMMM yyyy - hh:mm")
+            let timestamp = Date()
+            usageHistory[indexRow].usageName = title
+            usageHistory[indexRow].usagePrice = amount
+            usageHistory[indexRow].usageDate = timestamp
+            usageHistory[indexRow].status = utilization
+            self.navigationController?.popToRootViewController(animated: true)
+        }
     }
     @IBAction func deleteButton(_ sender: Any) {
-        let alert = UIAlertController (title: "Apakah anda yakin ingin menghapus Riwayat Penggunaan?", message: "", preferredStyle: UIAlertController.Style.alert)
+        let alert = UIAlertController(title: "Apakah anda yakin ingin menghapus Riwayat Penggunaan?",
+            message: "",
+            preferredStyle: UIAlertController.Style.alert)
         let deleteAction = UIAlertAction(title: "Hapus", style: UIAlertAction.Style.default) {_ in
             usageHistory.remove(at: self.indexRow)
-            let viewController = HomeViewController(nibName: String(describing: HomeViewController.self), bundle: nil)
-            self.navigationController?.pushViewController(viewController, animated: true)
+            self.navigationController?.popToRootViewController(animated: true)
             }
         alert.addAction(deleteAction)
         alert.addAction(UIAlertAction(title: "Batal", style: UIAlertAction.Style.cancel, handler: nil))

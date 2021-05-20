@@ -7,8 +7,15 @@
 
 import UIKit
 
+protocol UsageDelegate {
+    func addUsage(usage: UsageHistory)
+}
+protocol HomeAdd {
+    func buttonBack(_ sender: Any)
+}
 class HomeAddViewController: UIViewController, UITextFieldDelegate {
     var utilization: Bool = true
+    var usageDelegate: UsageDelegate?
 
     @IBOutlet weak var titleUsage: UITextField!
     @IBOutlet weak var usageAmount: UITextField!
@@ -17,6 +24,7 @@ class HomeAddViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var buttonSave: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
+        titleUsage.delegate = self
         usageAmount.delegate = self
         buttonView.layer.shadowColor = UIColor.black.cgColor
         buttonView.layer.shadowOpacity = 0.15
@@ -28,15 +36,12 @@ class HomeAddViewController: UIViewController, UITextFieldDelegate {
         buttonViewOut.layer.shadowOffset = .zero
         buttonViewOut.layer.shadowRadius = 5
         buttonViewOut.layer.cornerRadius = 10
-        buttonSave.layer.cornerRadius = 10
         let tap = UITapGestureRecognizer(target: self, action: #selector(tapped(_ :)))
         buttonView.addGestureRecognizer(tap)
         let tapOut = UITapGestureRecognizer(target: self, action: #selector(tappedOut(_ :)))
         buttonViewOut.addGestureRecognizer(tapOut)
+        buttonSave.layer.cornerRadius = 10
         buttonSave.isEnabled = false
-    }
-    @IBAction func buttonBack(_ sender: Any) {
-        self.navigationController?.popToRootViewController(animated: true)
     }
     @IBAction func tapped(_ gestureRecognizer: UITapGestureRecognizer) {
         buttonView.layer.borderWidth = 3
@@ -57,22 +62,46 @@ class HomeAddViewController: UIViewController, UITextFieldDelegate {
         buttonSave.layer.backgroundColor = CGColor(red: 80/256, green: 105/256, blue: 184/256, alpha: 1.0)
         }
     @IBAction func addNewUsage(_ sender: Any) {
-        let ids = "MM-\(randomString(length: 6))"
-        let title = titleUsage.text ?? ""
-        let amount = Int(usageAmount.text ?? "") ?? 0
-        let timestamp = DateFormatter.localizedString(from: Date(), dateStyle: .medium, timeStyle: .short)
-        let usage = UsageHistory(ids: ids, usageName: title, usagePrice: amount, usageDate: timestamp, status: utilization)
-        Usage(usage: usage).addNewUsage()
-        self.navigationController?.popToRootViewController(animated: true)
+        if titleUsage.text?.isEmpty == true || usageAmount.text?.isEmpty == true {
+            let alert = UIAlertController(title: "Judul dan Jumlah pemakaian harus diisi!",
+                                           message: "",
+                                           preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.cancel, handler: nil))
+            return self.present(alert, animated: true, completion: nil)
+        } else {
+            buttonSave.isEnabled = true
+            let ids = "MM-\(randomString(length: 6))"
+            let title = titleUsage.text ?? ""
+            let amount = Int(usageAmount.text ?? "") ?? 0
+//            let timestamp = Date().toString(format: "dd MMMM yyyy - hh:mm")
+            let timestamp = Date()
+            let usage = UsageHistory(ids: ids,
+                                     usageName: title,
+                                     usagePrice: amount,
+                                     usageDate: timestamp,
+                                     status: utilization)
+            usageDelegate?.addUsage(usage: usage)
+            self.navigationController?.popToRootViewController(animated: true)
+        }
     }
     func randomString(length: Int) -> String {
       let letters = "0123456789"
       return String((0..<length).map { _ in letters.randomElement()! })
     }
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        guard CharacterSet(charactersIn: "0123456789").isSuperset(of: CharacterSet(charactersIn: string)) else {
-            return false
+    func textField(_ textField: UITextField,
+                   shouldChangeCharactersIn range: NSRange,
+                   replacementString string: String) -> Bool {
+        if textField == usageAmount {
+            guard CharacterSet(charactersIn: "0123456789").isSuperset(of: CharacterSet(charactersIn: string))
+            else {
+                return false
+            }
         }
         return true
+    }
+}
+extension HomeAddViewController: HomeAdd {
+    @IBAction func buttonBack(_ sender: Any) {
+        self.navigationController?.popToRootViewController(animated: true)
     }
 }

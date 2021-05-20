@@ -10,6 +10,10 @@ import UIKit
 protocol PassNameDelegate {
     func newName(name: String)
 }
+protocol PopUpButton {
+    func closePopUpButton(_ sender: Any)
+    func savePopUpButton(_ sender: Any)
+}
 
 class PopUpViewController: UIViewController {
     var passName: PassNameDelegate!
@@ -25,23 +29,6 @@ class PopUpViewController: UIViewController {
         self.popUpSaveButton.layer.cornerRadius = 10
         self.showAnimate()
     }
-    @IBAction func closePopUpButton(_ sender: Any) {
-        let popOverVC = PopUpViewController(nibName: String(describing: PopUpViewController.self), bundle: nil)
-        popOverVC.willMove(toParent: nil)
-        popOverVC.view.removeFromSuperview()
-        popOverVC.removeFromParent()
-        self.removeAnimate()
-    }
-    @IBAction func savePopUpButton(_ sender: Any) {
-        let nameText = popUpTextField.text ?? "Your Name"
-        passName.newName(name: nameText)
-        let popOverVC = PopUpViewController(nibName: String(describing: PopUpViewController.self), bundle: nil)
-        NotificationCenter.default.post(name: Notification.Name("changeName"), object: nil, userInfo: ["name": nameText])
-        popOverVC.willMove(toParent: nil)
-        popOverVC.view.removeFromSuperview()
-        popOverVC.removeFromParent()
-        self.removeAnimate()
-    }
     func showAnimate() {
         self.view.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
         self.view.alpha = 0.0
@@ -54,11 +41,32 @@ class PopUpViewController: UIViewController {
         UIView.animate(withDuration: 0.25, animations: {
             self.view.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
             self.view.alpha = 0.0
-        }, completion: {
-            (finished : Bool) in
+        },
+        completion: { (finished: Bool) in
             if finished {
                 self.view.removeFromSuperview()
             }
         })
+    }
+}
+extension PopUpViewController: PopUpButton {
+    @IBAction func closePopUpButton(_ sender: Any) {
+        let popOverVC = PopUpViewController(nibName: String(describing: PopUpViewController.self), bundle: nil)
+        popOverVC.willMove(toParent: nil)
+        popOverVC.view.removeFromSuperview()
+        popOverVC.removeFromParent()
+        self.removeAnimate()
+    }
+    @IBAction func savePopUpButton(_ sender: Any) {
+        let nameText = popUpTextField.text ?? "Your Name"
+        passName.newName(name: nameText)
+        let popOverVC = PopUpViewController(nibName: String(describing: PopUpViewController.self), bundle: nil)
+        NotificationCenter.default.post(name: Notification.Name("changeName"),
+                                        object: nil,
+                                        userInfo: ["name": nameText])
+        popOverVC.willMove(toParent: nil)
+        popOverVC.view.removeFromSuperview()
+        popOverVC.removeFromParent()
+        self.removeAnimate()
     }
 }

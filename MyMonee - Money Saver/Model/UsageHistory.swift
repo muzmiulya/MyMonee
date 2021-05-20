@@ -14,9 +14,9 @@ struct UsageHistory {
     var ids: String?
     var usageName: String?
     var usagePrice: Int?
-    var usageDate: String?
+    var usageDate: Date?
     var status: Bool?
-    init(ids: String?, usageName: String?, usagePrice: Int?, usageDate: String?, status: Bool?) {
+    init(ids: String?, usageName: String?, usagePrice: Int?, usageDate: Date?, status: Bool?) {
         self.ids = ids
         self.usageName = usageName
         self.usagePrice = usagePrice
@@ -24,10 +24,7 @@ struct UsageHistory {
         self.status = status
     }
 }
-var usageHistory: [UsageHistory] = [
-//    UsageHistory(ids: "fe432", usageName: "Bayar Listrik", usagePrice: 256000, usageDate: "Feb 02 2021 at 07:30 AM", status: false),
-//    UsageHistory(ids: "kg092", usageName: "Gaji Februari", usagePrice: 1250000, usageDate: "April 15 2021 at 10:31 AM", status: true)
-]
+var usageHistory: [UsageHistory] = []
 
 class Usage {
     var usage: UsageHistory
@@ -48,3 +45,46 @@ class Balance: Counting {
         return total
     }
 }
+
+func getMethod() {
+        guard let url = URL(string: "https://60a587bcc0c1fd00175f4035.mockapi.io/api/v1/transaction") else {
+            print("Error: cannot create URL")
+            return
+        }
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            guard error == nil else {
+                print("Error: error calling GET")
+                print(error!)
+                return
+            }
+            guard let data = data else {
+                print("Error: Did not receive data")
+                return
+            }
+            guard let response = response as? HTTPURLResponse, (200 ..< 299) ~= response.statusCode else {
+                print("Error: HTTP request failed")
+                return
+            }
+            do {
+                guard let jsonObject = try JSONSerialization.jsonObject(with: data) as? [String: Any] else {
+                    print("Error: Cannot convert data to JSON object")
+                    return
+                }
+                guard let prettyJsonData = try? JSONSerialization.data(withJSONObject: jsonObject, options: .prettyPrinted) else {
+                    print("Error: Cannot convert JSON object to Pretty JSON data")
+                    return
+                }
+                guard let prettyPrintedJson = String(data: prettyJsonData, encoding: .utf8) else {
+                    print("Error: Could print JSON in String")
+                    return
+                }
+                
+                print(prettyPrintedJson)
+            } catch {
+                print("Error: Trying to convert JSON data to string")
+                return
+            }
+        }.resume()
+    }

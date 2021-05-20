@@ -23,6 +23,7 @@
             <connections>
                 <outlet property="backButton" destination="t5E-gc-aTe" id="pLK-Fs-9Mx"/>
                 <outlet property="confirmButton" destination="dD5-3W-TWo" id="vby-8a-8EB"/>
+                <outlet property="dreamDetailView" destination="Vbl-XT-pDq" id="Cqh-1H-0Qo"/>
                 <outlet property="dreamGoal" destination="V1w-4K-H4j" id="4jh-nh-6Gh"/>
                 <outlet property="dreamMoney" destination="pgf-cm-ky8" id="ygt-QR-vFH"/>
                 <outlet property="dreamPercentage" destination="fSG-y5-ipK" id="NWe-2k-ULU"/>

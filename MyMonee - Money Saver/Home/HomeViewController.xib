@@ -102,10 +102,10 @@
                                     <rect key="frame" x="0.0" y="346" width="414" height="508"/>
                                     <subviews>
                                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hNf-Qo-VDh">
-                                            <rect key="frame" x="0.0" y="42" width="414" height="407"/>
+                                            <rect key="frame" x="0.0" y="42" width="414" height="458"/>
                                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="407" id="NfF-7I-ihu"/>
+                                                <constraint firstAttribute="height" constant="458" id="NfF-7I-ihu"/>
                                             </constraints>
                                         </tableView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Riwayat Penggunaan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hzn-Hc-qcq">
@@ -121,7 +121,7 @@
                                     </subviews>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     <constraints>
-                                        <constraint firstAttribute="bottom" secondItem="hNf-Qo-VDh" secondAttribute="bottom" constant="59" id="Fod-NH-cru"/>
+                                        <constraint firstAttribute="bottom" secondItem="hNf-Qo-VDh" secondAttribute="bottom" constant="8" id="Fod-NH-cru"/>
                                         <constraint firstAttribute="trailing" secondItem="hNf-Qo-VDh" secondAttribute="trailing" id="Msc-jN-Txk"/>
                                         <constraint firstItem="R84-Mo-sAA" firstAttribute="leading" secondItem="xve-zM-06g" secondAttribute="leading" id="NG9-ag-euN"/>
                                         <constraint firstItem="hzn-Hc-qcq" firstAttribute="top" secondItem="xve-zM-06g" secondAttribute="top" constant="8" id="YyU-1E-geQ"/>

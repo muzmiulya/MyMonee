@@ -10,8 +10,11 @@ import UIKit
 protocol EmptyData {
     func add()
 }
+protocol HomeNotFound {
+    func buttonAction(_ sender: Any)
+}
 
-class HomeDataNotFound: UIView {
+class HomeDataNotFound: UIView, HomeNotFound {
     @IBOutlet var mainView: UIView!
     @IBOutlet weak var buttonAdd: UIButton!
     var delegate: EmptyData?

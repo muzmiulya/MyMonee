@@ -17,5 +17,4 @@ class HomeCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
         collectionView.layer.cornerRadius = 5
     }
-
 }
