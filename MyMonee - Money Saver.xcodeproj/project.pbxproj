@@ -17,6 +17,8 @@
 		FA509055264F53A300D12A8A /* HomeEditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA509053264F53A300D12A8A /* HomeEditViewController.xib */; };
 		FA509066264FBA0000D12A8A /* DreamEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA509064264FBA0000D12A8A /* DreamEditViewController.swift */; };
 		FA509067264FBA0000D12A8A /* DreamEditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA509065264FBA0000D12A8A /* DreamEditViewController.xib */; };
+		FA67CF32265637DB002474EA /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA67CF31265637DB002474EA /* NetworkService.swift */; };
+		FA67CF3826563CB4002474EA /* UsageHistoryDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA67CF3726563CB4002474EA /* UsageHistoryDataSource.swift */; };
 		FA69BE4E265266BC00DA3DA6 /* HomeDataNotFound.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA69BE4D265266BC00DA3DA6 /* HomeDataNotFound.swift */; };
 		FA69BE51265266D700DA3DA6 /* HomeDataNotFound.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA69BE50265266D700DA3DA6 /* HomeDataNotFound.xib */; };
 		FA6B8A08264D0B0900AEAA1C /* HomeAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6B8A06264D0B0900AEAA1C /* HomeAddViewController.swift */; };
@@ -26,7 +28,8 @@
 		FA6B8A12264D4D2300AEAA1C /* Dreams.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6B8A11264D4D2300AEAA1C /* Dreams.swift */; };
 		FA74B80B2652B90B0064FA39 /* DreamNotFoundTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA74B8092652B90B0064FA39 /* DreamNotFoundTableViewCell.swift */; };
 		FA74B80C2652B90B0064FA39 /* DreamNotFoundTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA74B80A2652B90B0064FA39 /* DreamNotFoundTableViewCell.xib */; };
-		FA74B811265340810064FA39 /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA74B810265340810064FA39 /* Currency.swift */; };
+		FA75C170265A6FF400CD5181 /* NetworkServiceDreams.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA75C16F265A6FF400CD5181 /* NetworkServiceDreams.swift */; };
+		FA75C177265A77D900CD5181 /* DreamDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA75C176265A77D900CD5181 /* DreamDataSource.swift */; };
 		FAA2D8C22650B86C00112D04 /* PopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA2D8C02650B86C00112D04 /* PopUpViewController.swift */; };
 		FAA2D8C32650B86C00112D04 /* PopUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAA2D8C12650B86C00112D04 /* PopUpViewController.xib */; };
 		FAA2D8D526516A0600112D04 /* CountUsage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA2D8D426516A0600112D04 /* CountUsage.swift */; };
@@ -70,6 +73,8 @@
 		FA509053264F53A300D12A8A /* HomeEditViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeEditViewController.xib; sourceTree = "<group>"; };
 		FA509064264FBA0000D12A8A /* DreamEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DreamEditViewController.swift; sourceTree = "<group>"; };
 		FA509065264FBA0000D12A8A /* DreamEditViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DreamEditViewController.xib; sourceTree = "<group>"; };
+		FA67CF31265637DB002474EA /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		FA67CF3726563CB4002474EA /* UsageHistoryDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsageHistoryDataSource.swift; sourceTree = "<group>"; };
 		FA69BE4D265266BC00DA3DA6 /* HomeDataNotFound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDataNotFound.swift; sourceTree = "<group>"; };
 		FA69BE50265266D700DA3DA6 /* HomeDataNotFound.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeDataNotFound.xib; sourceTree = "<group>"; };
 		FA6B8A06264D0B0900AEAA1C /* HomeAddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAddViewController.swift; sourceTree = "<group>"; };
@@ -79,7 +84,8 @@
 		FA6B8A11264D4D2300AEAA1C /* Dreams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dreams.swift; sourceTree = "<group>"; };
 		FA74B8092652B90B0064FA39 /* DreamNotFoundTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DreamNotFoundTableViewCell.swift; sourceTree = "<group>"; };
 		FA74B80A2652B90B0064FA39 /* DreamNotFoundTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DreamNotFoundTableViewCell.xib; sourceTree = "<group>"; };
-		FA74B810265340810064FA39 /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
+		FA75C16F265A6FF400CD5181 /* NetworkServiceDreams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceDreams.swift; sourceTree = "<group>"; };
+		FA75C176265A77D900CD5181 /* DreamDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DreamDataSource.swift; sourceTree = "<group>"; };
 		FAA2D8C02650B86C00112D04 /* PopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpViewController.swift; sourceTree = "<group>"; };
 		FAA2D8C12650B86C00112D04 /* PopUpViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PopUpViewController.xib; sourceTree = "<group>"; };
 		FAA2D8D426516A0600112D04 /* CountUsage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountUsage.swift; sourceTree = "<group>"; };
@@ -134,6 +140,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FA67CF30265637C9002474EA /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				FA67CF31265637DB002474EA /* NetworkService.swift */,
+				FA67CF3726563CB4002474EA /* UsageHistoryDataSource.swift */,
+				FA75C16F265A6FF400CD5181 /* NetworkServiceDreams.swift */,
+				FA75C176265A77D900CD5181 /* DreamDataSource.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
 		FA6AC47D2650A3C800337AA0 /* PopUp */ = {
 			isa = PBXGroup;
 			children = (
@@ -141,14 +158,6 @@
 				FAA2D8C12650B86C00112D04 /* PopUpViewController.xib */,
 			);
 			path = PopUp;
-			sourceTree = "<group>";
-		};
-		FA74B80F265340680064FA39 /* Converter */ = {
-			isa = PBXGroup;
-			children = (
-				FA74B810265340810064FA39 /* Currency.swift */,
-			);
-			path = Converter;
 			sourceTree = "<group>";
 		};
 		FAA2D8D726518BF900112D04 /* EmptyHandling */ = {
@@ -181,7 +190,7 @@
 		FAAE3FEB264B67B900BE2604 /* MyMonee - Money Saver */ = {
 			isa = PBXGroup;
 			children = (
-				FA74B80F265340680064FA39 /* Converter */,
+				FA67CF30265637C9002474EA /* Network */,
 				FAA2D8D726518BF900112D04 /* EmptyHandling */,
 				FA6AC47D2650A3C800337AA0 /* PopUp */,
 				FAAE408D264BE73200BE2604 /* Dream */,
@@ -404,7 +413,8 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+			shellScript = "
+";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -415,6 +425,9 @@
 			files = (
 				FA3CF68F264E62690042D92F /* DreamDetailViewController.swift in Sources */,
 				FA6B8A08264D0B0900AEAA1C /* HomeAddViewController.swift in Sources */,
+				FA75C177265A77D900CD5181 /* DreamDataSource.swift in Sources */,
+				FA67CF32265637DB002474EA /* NetworkService.swift in Sources */,
+				FA75C170265A6FF400CD5181 /* NetworkServiceDreams.swift in Sources */,
 				FAAE3FF1264B67B900BE2604 /* ViewController.swift in Sources */,
 				FAAE3FED264B67B900BE2604 /* AppDelegate.swift in Sources */,
 				FA6B8A0E264D494C00AEAA1C /* DreamTableViewCell.swift in Sources */,
@@ -427,10 +440,10 @@
 				FAAE4084264BC16F00BE2604 /* HomeTableViewCell.swift in Sources */,
 				FAAE4091264BE75E00BE2604 /* DreamTableViewController.swift in Sources */,
 				FA509066264FBA0000D12A8A /* DreamEditViewController.swift in Sources */,
-				FA74B811265340810064FA39 /* Currency.swift in Sources */,
 				FAA2D8D526516A0600112D04 /* CountUsage.swift in Sources */,
 				FAAE406D264B9D7300BE2604 /* HomeViewController.swift in Sources */,
 				FAA2D8C22650B86C00112D04 /* PopUpViewController.swift in Sources */,
+				FA67CF3826563CB4002474EA /* UsageHistoryDataSource.swift in Sources */,
 				FA74B80B2652B90B0064FA39 /* DreamNotFoundTableViewCell.swift in Sources */,
 				FA6B8A12264D4D2300AEAA1C /* Dreams.swift in Sources */,
 				FA509054264F53A300D12A8A /* HomeEditViewController.swift in Sources */,

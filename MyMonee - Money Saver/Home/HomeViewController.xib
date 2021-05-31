@@ -18,6 +18,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeViewController" customModule="MyMonee___Money_Saver" customModuleProvider="target">
             <connections>
+                <outlet property="activityIndicator" destination="z0i-oC-n9V" id="RV4-tS-qNA"/>
                 <outlet property="collectionView" destination="FiD-YK-IbM" id="baT-do-CzO"/>
                 <outlet property="notFoundView" destination="R84-Mo-sAA" id="0C7-pe-vby"/>
                 <outlet property="tableView" destination="hNf-Qo-VDh" id="qtV-rb-IIN"/>
@@ -133,6 +134,9 @@
                                         <constraint firstAttribute="trailing" secondItem="R84-Mo-sAA" secondAttribute="trailing" id="xpU-QF-Cw1"/>
                                     </constraints>
                                 </view>
+                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="z0i-oC-n9V">
+                                    <rect key="frame" x="197" y="443" width="20" height="20"/>
+                                </activityIndicatorView>
                             </subviews>
                             <color key="backgroundColor" red="0.94117647058823528" green="0.94901960784313721" blue="0.97254901960784312" alpha="0.84705882352941175" colorSpace="calibratedRGB"/>
                             <constraints>
@@ -172,6 +176,8 @@
                 <constraint firstAttribute="trailing" secondItem="1xu-5E-rX9" secondAttribute="trailing" id="5D8-lM-8Gf"/>
                 <constraint firstItem="1xu-5E-rX9" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="8Yv-7R-tXB"/>
                 <constraint firstItem="1xu-5E-rX9" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="R9U-7z-QBb"/>
+                <constraint firstItem="z0i-oC-n9V" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" id="lgf-LO-gdC"/>
+                <constraint firstItem="z0i-oC-n9V" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="tpg-wF-4QE"/>
                 <constraint firstAttribute="bottom" secondItem="1xu-5E-rX9" secondAttribute="bottom" id="uzS-vc-uOj"/>
             </constraints>
             <point key="canvasLocation" x="50.724637681159422" y="17.410714285714285"/>

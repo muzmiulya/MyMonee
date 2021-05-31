@@ -13,52 +13,44 @@ protocol DreamPage {
 
 class DreamTableViewController: UITableViewController {
     @IBOutlet weak var dreamTableView: UITableView!
+    @IBOutlet weak var activityIndicatorView: UIView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    var dreamService: NetworkServiceDreams = NetworkServiceDreams()
+    var dataSource: DreamDataSource = DreamDataSource()
     override func viewDidLoad() {
         super.viewDidLoad()
         let uinib = UINib(nibName: String(describing: DreamNotFoundTableViewCell.self), bundle: nil)
         dreamTableView.register(uinib, forCellReuseIdentifier: String(describing: DreamNotFoundTableViewCell.self))
         let uiNib = UINib(nibName: String(describing: DreamTableViewCell.self), bundle: nil)
         dreamTableView.register(uiNib, forCellReuseIdentifier: String(describing: DreamTableViewCell.self))
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(self.toast(_:)),
+                                               name: Notification.Name("EditDream"),
+                                               object: nil)
+        self.tableView.dataSource = self.dataSource
     }
     override func viewDidAppear(_ animated: Bool) {
-        tableView.reloadData()
+        super.viewDidAppear(animated)
+        loadData()
     }
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if dreams.count > 0 {
-            return dreams.count
-        } else {
-            return 1
+    func loadData() {
+        activityIndicator.startAnimating()
+        activityIndicatorView.isHidden = false
+        self.dreamService.dreamList { (lists) in
+            DispatchQueue.main.async {
+                dreams = lists
+                self.dataSource.dreamList = lists
+                self.tableView.reloadData()
+                self.activityIndicator.stopAnimating()
+                self.activityIndicatorView.isHidden = true
+            }
         }
     }
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if dreams.count > 0 {
-            // swiftlint:disable force_cast
-            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: DreamTableViewCell.self),
-                for: indexPath) as! DreamTableViewCell
-            // swiftlint:enable force_cast
-            cell.delegateConfirm = self
-            cell.dreamComplete.tag = indexPath.row
-            cell.dreamTitleLabel.text = dreams[indexPath.row].dreamTitle ?? ""
-            cell.dreamPriceLabel.text = "IDR \(convertIntToCurrency(value: Balance().countBalance()))"
-            cell.dreamPriceGoalLabel.text = "IDR \(convertIntToCurrency(value: dreams[indexPath.row].dreamPriceGoal ?? 0))"
-            let progress = Float(Balance().countBalance()) / Float(dreams[indexPath.row].dreamPriceGoal ?? 0)
-            cell.dreamProgressView.progress = progress
-            cell.dreamComplete.isEnabled = false
-            if progress >= 1 {
-                cell.dreamComplete.isEnabled = true
-                cell.dreamComplete.setImage(UIImage(named: "Check_Selected"), for: .normal)
-            } else {
-                cell.dreamComplete.isEnabled = false
-                cell.dreamComplete.setImage(UIImage(named: "Check"), for: .normal)
-            }
-            return cell
-        } else {
-            // swiftlint:disable force_cast
-            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: DreamNotFoundTableViewCell.self),
-                for: indexPath) as! DreamNotFoundTableViewCell
-            cell.delegate = self
-            // swiftlint:enable force_cast
-            return cell
+    @objc func toast(_ notification: Notification) {
+        if let dict = notification.userInfo as NSDictionary? {
+            let text = dict["text"] as? String
+            let seconds = dict["seconds"] as? Double
+            showToast(message: text ?? "", seconds: seconds ?? 0.0)
         }
     }
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -70,20 +62,12 @@ class DreamTableViewController: UITableViewController {
     }
     override func tableView(_ tableView: UITableView,
                             didSelectRowAt indexPath: IndexPath) {
-        let viewController = DreamDetailViewController(nibName: String(describing: DreamDetailViewController.self),
-                                                       bundle: nil)
-        viewController.titles = dreams[indexPath.row].dreamTitle ?? ""
+        let viewController = DreamDetailViewController(nibName: String(describing: DreamDetailViewController.self), bundle: nil)
         viewController.id = dreams[indexPath.row].id ?? ""
-        viewController.progress = Float(Balance().countBalance()) / Float(dreams[indexPath.row].dreamPriceGoal ?? 0)
-        viewController.money = Balance().countBalance()
-        viewController.goal = dreams[indexPath.row].dreamPriceGoal ?? 0
         viewController.indexRow = indexPath.row
+        viewController.delegateToast = self
         viewController.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(viewController, animated: true)
-    }
-    func randomString(length: Int) -> String {
-      let letters = "0123456789"
-      return String((0..<length).map { _ in letters.randomElement()! })
     }
 }
 extension DreamTableViewController: DreamEmpty {
@@ -91,53 +75,56 @@ extension DreamTableViewController: DreamEmpty {
         buttonAdd(self)
     }
 }
-extension DreamTableViewController: DreamDelegate {
-    func addDream(dream: Dreams) {
-        dreams.append(dream)
+extension DreamTableViewController: AddToastDream, DetailToastDream {
+    func showToast(message : String, seconds: Double){
+        let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+        alert.view.backgroundColor = .black
+        alert.view.alpha = 0.5
+        alert.view.layer.cornerRadius = 15
+        self.present(alert, animated: true)
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + seconds) {
+            alert.dismiss(animated: true)
+        }
     }
 }
-extension DreamTableViewController: DreamPage, Confirmation {
+extension DreamTableViewController: DreamPage {
     @IBAction func buttonAdd(_ sender: Any) {
-        let viewController = DreamAddViewController(nibName: String(describing: DreamAddViewController.self),
-                                                    bundle: nil)
+        let viewController = DreamAddViewController(nibName: String(describing: DreamAddViewController.self), bundle: nil)
         viewController.hidesBottomBarWhenPushed = true
-        viewController.dreamDelegate = self
+        viewController.delegateToast = self
         self.navigationController?.pushViewController(viewController, animated: true)
     }
-    func dreamComplete(_ tag: Int) {
-        let alert = UIAlertController(title: "Selamat! \n Target impian anda telah tercapai! \n Ingin transaksi?",
-                                       message: "",
-                                       preferredStyle: UIAlertController.Style.alert)
-        let deleteAction = UIAlertAction(title: "Ya", style: UIAlertAction.Style.default) {_ in
-            let ids = "MM-\(self.randomString(length: 6))"
-            let title = dreams[tag].dreamTitle ?? ""
-            let amount = dreams[tag].dreamPriceGoal ?? 0
+//    func dreamComplete(_ tag: Int) {
+//        let alert = UIAlertController(title: "Selamat! \n Target impian anda telah tercapai! \n Ingin transaksi?", message: "", preferredStyle: UIAlertController.Style.alert)
+//        let confirmAction = UIAlertAction(title: "Ya", style: UIAlertAction.Style.default) {_ in
+//            let ids = dreams[tag].id ?? ""
+//            let title = dreams[tag].dreamTitle ?? ""
+//            let amount = dreams[tag].dreamPriceGoal ?? 0
 //            let timestamp = Date().toString(format: "dd MMMM yyyy - hh:mm")
-            let timestamp = Date()
-            let usage = UsageHistory(ids: ids,
-                                     usageName: title,
-                                     usagePrice: amount,
-                                     usageDate: timestamp,
-                                     status: false)
-            Usage(usage: usage).addNewUsage()
-            dreams.remove(at: tag)
-            self.tableView.reloadData()
-            }
-        alert.addAction(deleteAction)
-        alert.addAction(UIAlertAction(title: "Batal", style: UIAlertAction.Style.cancel, handler: nil))
-        self.present(alert, animated: true, completion: nil)
-        self.navigationController?.popToRootViewController(animated: true)
-    }
-    func dreamDelete(_ tag: Int) {
-        let alert = UIAlertController(title: "Apakah anda yakin ingin menghapus Impian?",
-                                       message: "",
-                                       preferredStyle: UIAlertController.Style.alert)
-        let deleteAction = UIAlertAction(title: "Hapus", style: UIAlertAction.Style.default) {_ in
-            dreams.remove(at: tag)
-            self.tableView.reloadData()
-            }
-        alert.addAction(deleteAction)
-        alert.addAction(UIAlertAction(title: "Batal", style: UIAlertAction.Style.cancel, handler: nil))
-        self.present(alert, animated: true, completion: nil)
-    }
+//            let usage = UsageHistory(ids: ids,
+//                                     usageName: title,
+//                                     usagePrice: amount,
+//                                     usageDate: timestamp,
+//                                     usageDateUpdated: timestamp,
+//                                     status: false)
+//            NetworkService().postMethod(usage: usage)
+//            NetworkServiceDreams().deleteMethod(id: ids)
+//            self.tableView.reloadData()
+//            }
+//        alert.addAction(confirmAction)
+//        alert.addAction(UIAlertAction(title: "Batal", style: UIAlertAction.Style.cancel, handler: nil))
+//        self.present(alert, animated: true, completion: nil)
+//        self.navigationController?.popToRootViewController(animated: true)
+//    }
+//    func dreamDelete(_ tag: Int) {
+//        let alert = UIAlertController(title: "Apakah anda yakin ingin menghapus Impian?", message: "", preferredStyle: UIAlertController.Style.alert)
+//        let deleteAction = UIAlertAction(title: "Hapus", style: UIAlertAction.Style.default) {_ in
+//            let ids = dreams[tag].id ?? ""
+//            NetworkServiceDreams().deleteMethod(id: ids)
+//            self.tableView.reloadData()
+//            }
+//        alert.addAction(deleteAction)
+//        alert.addAction(UIAlertAction(title: "Batal", style: UIAlertAction.Style.cancel, handler: nil))
+//        self.present(alert, animated: true, completion: nil)
+//    }
 }

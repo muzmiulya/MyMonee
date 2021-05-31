@@ -14,11 +14,13 @@ protocol EditHome {
 }
 
 class HomeEditViewController: UIViewController, UITextFieldDelegate {
+    var ids: String = ""
     var usageName: String = ""
     var usagePrice: Int = 0
+    var usageDate: String = ""
     var indexRow: Int = 0
     var utilization: Bool = true
-
+    
     @IBOutlet weak var titleEdit: UITextField!
     @IBOutlet weak var amountEdit: UITextField!
     @IBOutlet weak var buttonView: UIView!
@@ -63,7 +65,7 @@ class HomeEditViewController: UIViewController, UITextFieldDelegate {
         utilization = true
         buttonRenew.isEnabled = true
         buttonRenew.layer.backgroundColor = CGColor(red: 80/256, green: 105/256, blue: 184/256, alpha: 1.0)
-        }
+    }
     @IBAction func tappedOut(_ gestureRecognizer: UITapGestureRecognizer) {
         buttonView.layer.borderWidth = 1
         buttonView.layer.borderColor = UIColor.white.cgColor
@@ -72,7 +74,7 @@ class HomeEditViewController: UIViewController, UITextFieldDelegate {
         utilization = false
         buttonRenew.isEnabled = true
         buttonRenew.layer.backgroundColor = CGColor(red: 80/256, green: 105/256, blue: 184/256, alpha: 1.0)
-        }
+    }
     func textField(_ textField: UITextField,
                    shouldChangeCharactersIn range: NSRange,
                    replacementString string: String) -> Bool {
@@ -92,32 +94,41 @@ extension HomeEditViewController: EditHome {
     @IBAction func editButton(_ sender: Any) {
         if titleEdit.text?.isEmpty == true || amountEdit.text?.isEmpty == true {
             let alert = UIAlertController(title: "Judul dan Jumlah pemakaian harus diisi!",
-                                           message: "",
-                                           preferredStyle: UIAlertController.Style.alert)
+                                          message: "",
+                                          preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.cancel, handler: nil))
             return self.present(alert, animated: true, completion: nil)
         } else {
             let title = titleEdit.text ?? ""
             let amount = Int(amountEdit.text ?? "") ?? 0
-//            let timestamp = Date().toString(format: "dd MMMM yyyy - hh:mm")
-            let timestamp = Date()
-            usageHistory[indexRow].usageName = title
-            usageHistory[indexRow].usagePrice = amount
-            usageHistory[indexRow].usageDate = timestamp
-            usageHistory[indexRow].status = utilization
+            let timestamp = Date().toString(format: "dd MMMM yyyy - hh:mm")
+            let usage = UsageHistory(ids: ids,
+                                     usageName: title,
+                                     usagePrice: amount,
+                                     usageDate: usageDate,
+                                     usageDateUpdated: timestamp,
+                                     status: utilization)
+            NetworkService().putMethod(usage: usage)
             self.navigationController?.popToRootViewController(animated: true)
+            NotificationCenter.default.post(name: Notification.Name("Edited"),
+                                            object: nil,
+                                            userInfo: ["text": "Usage Successfully Edited!", "seconds": 1.5])
         }
     }
     @IBAction func deleteButton(_ sender: Any) {
         let alert = UIAlertController(title: "Apakah anda yakin ingin menghapus Riwayat Penggunaan?",
-            message: "",
-            preferredStyle: UIAlertController.Style.alert)
+                                      message: "",
+                                      preferredStyle: UIAlertController.Style.alert)
         let deleteAction = UIAlertAction(title: "Hapus", style: UIAlertAction.Style.default) {_ in
-            usageHistory.remove(at: self.indexRow)
+            NetworkService().deleteMethod(id: self.ids)
             self.navigationController?.popToRootViewController(animated: true)
-            }
+            NotificationCenter.default.post(name: Notification.Name("Edited"),
+                                            object: nil,
+                                            userInfo: ["text": "Usage Successfully Deleted!", "seconds": 1.5])
+        }
         alert.addAction(deleteAction)
         alert.addAction(UIAlertAction(title: "Batal", style: UIAlertAction.Style.cancel, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
+    
 }

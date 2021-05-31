@@ -18,8 +18,19 @@ class HomeTableViewCell: UITableViewCell {
         super.awakeFromNib()
         self.selectionStyle = .none
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
+    
+    func datas(select: UsageHistory) {
+        titleLabel.text = select.usageName ?? ""
+        dateLabel.text = select.usageDate ?? ""
+        priceLabel.text = "\(select.usagePrice ?? 0)"
+        if select.status {
+            imageStatus.image = UIImage(named: "Arrow_Up")
+            priceLabel.text = "+Rp \(select.usagePrice?.convertIntToCurrency() ?? "")"
+            priceLabel.textColor = UIColor(red: 33/256, green: 150/256, blue: 83/256, alpha: 1.0)
+        } else {
+            imageStatus.image = UIImage(named: "Arrow_Down")
+            priceLabel.text = "-Rp \(select.usagePrice?.convertIntToCurrency() ?? "")"
+            priceLabel.textColor = UIColor(red: 235/256, green: 87/256, blue: 87/256, alpha: 1.0)
+        }
     }
 }

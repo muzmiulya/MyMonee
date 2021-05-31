@@ -29,6 +29,23 @@ class DreamTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
+    
+    func datas(select: Dreams) {
+        dreamTitleLabel.text = select.dreamTitle ?? ""
+        dreamPriceLabel.text = "IDR \(Balance().countBalance().convertIntToCurrency())"
+        dreamPriceGoalLabel.text = "IDR \(select.dreamPriceGoal?.convertIntToCurrency() ?? "")"
+        let progress = Float(Balance().countBalance()) / Float(select.dreamPriceGoal ?? 0)
+        dreamProgressView.progress = progress
+        dreamComplete.isEnabled = false
+        if progress >= 1 {
+            dreamComplete.isEnabled = true
+            dreamComplete.setImage(UIImage(named: "Check_Selected"), for: .normal)
+        } else {
+            dreamComplete.isEnabled = false
+            dreamComplete.setImage(UIImage(named: "Check"), for: .normal)
+        }
+    }
+    
     @IBAction func achieveDream(_ sender: UIButton) {
         self.delegateConfirm?.dreamComplete(sender.tag)
     }

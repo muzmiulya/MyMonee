@@ -4,6 +4,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -14,6 +15,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DreamTableViewController" customModule="MyMonee___Money_Saver" customModuleProvider="target">
             <connections>
+                <outlet property="activityIndicator" destination="FsZ-Ng-efs" id="cFf-mR-cXs"/>
+                <outlet property="activityIndicatorView" destination="whC-3u-s6a" id="UXg-DF-La6"/>
                 <outlet property="dreamTableView" destination="i5M-Pr-FkT" id="jpo-EO-jOr"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="c5q-gv-3Qm"/>
             </connections>
@@ -55,6 +58,19 @@
                             <constraint firstAttribute="trailing" secondItem="uJh-rb-6NR" secondAttribute="trailing" constant="16" id="pE7-OK-2zo"/>
                         </constraints>
                     </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="whC-3u-s6a">
+                        <rect key="frame" x="0.0" y="62" width="414" height="0.0"/>
+                        <subviews>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="FsZ-Ng-efs">
+                                <rect key="frame" x="197" y="-10" width="20" height="20"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="FsZ-Ng-efs" firstAttribute="centerX" secondItem="whC-3u-s6a" secondAttribute="centerX" id="DO4-Z1-e2N"/>
+                            <constraint firstItem="FsZ-Ng-efs" firstAttribute="centerY" secondItem="whC-3u-s6a" secondAttribute="centerY" id="JjW-ag-m2T"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
                     <constraint firstItem="xBZ-TU-Rpt" firstAttribute="leading" secondItem="Pxp-QZ-nIv" secondAttribute="leading" id="1sX-Md-DUQ"/>
@@ -72,5 +88,8 @@
     </objects>
     <resources>
         <image name="Frame 7" width="36" height="36"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>

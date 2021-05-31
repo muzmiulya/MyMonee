@@ -12,7 +12,6 @@ protocol HomePage {
 }
 
 class HomeViewController: UIViewController,
-                          UITableViewDataSource,
                           UICollectionViewDataSource {
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
@@ -22,12 +21,13 @@ class HomeViewController: UIViewController,
     @IBOutlet weak var yourNameLabel: UILabel!
     @IBOutlet weak var totalBalanceLabel: UILabel!
     @IBOutlet weak var notFoundView: HomeDataNotFound!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     let defaults = UserDefaults.standard
-    var service: () = getMethod()
+    var dataSource: UsageHistoryDataSource = UsageHistoryDataSource()
+    var service: NetworkService = NetworkService()
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
-        tableView.dataSource = self
         collectionView.delegate = self
         collectionView.dataSource = self
         let uiNib = UINib(nibName: String(describing: HomeTableViewCell.self), bundle: nil)
@@ -44,37 +44,53 @@ class HomeViewController: UIViewController,
                                                selector: #selector(self.changeName(_:)),
                                                name: Notification.Name("changeName"),
                                                object: nil)
-//        self.loadData()
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(self.toast(_:)),
+                                               name: Notification.Name("Edited"),
+                                               object: nil)
+        self.tableView.dataSource = self.dataSource
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if usageHistory.count > 0 {
-            notFoundView.isHidden = true
-        } else {
-            notFoundView.isHidden = false
-        }
-        totalBalanceLabel.text = "Rp \(convertIntToCurrency(value: Balance().countBalance()))"
+        loadData()
         showTime()
         tableView.reloadData()
         latest()
         collectionView.reloadData()
-        if let value = defaults.value(forKey: "balance") as? String {
-            totalBalanceLabel.text = value
+    }
+    func loadData() {
+        activityIndicator.isHidden = false
+        activityIndicator.startAnimating()
+        self.service.usageList { (lists) in
+            DispatchQueue.main.async {
+                usageHistory = lists
+                self.dataSource.usageHistoryList = lists
+                self.tableView.reloadData()
+                self.totalBalanceLabel.text = "Rp \(Balance().countBalance().convertIntToCurrency())"
+                self.latest()
+                self.collectionView.reloadData()
+                if usageHistory.count > 0 {
+                    self.notFoundView.isHidden = true
+                } else {
+                    self.notFoundView.isHidden = false
+                }
+                self.activityIndicator.stopAnimating()
+                self.activityIndicator.isHidden = true
+            }
         }
     }
-//    func loadData() {
-//        self.service.loadMovieList { (movieList) in
-//            DispatchQueue.main.async {
-//                self.dataSource.movieList = movieList
-//                self.tableView.reloadData()
-//            }
-//        }
-//    }
     @objc func changeName(_ notification: Notification) {
         if let dict = notification.userInfo as NSDictionary? {
             if let names = dict["name"] as? String {
                 self.yourNameLabel.text = names
             }
+        }
+    }
+    @objc func toast(_ notification: Notification) {
+        if let dict = notification.userInfo as NSDictionary? {
+            let text = dict["text"] as? String
+            let seconds = dict["seconds"] as? Double
+            showToast(message: text ?? "", seconds: seconds ?? 0.0)
         }
     }
     func latest() {
@@ -99,35 +115,9 @@ class HomeViewController: UIViewController,
     }
 }
 extension HomeViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return usageHistory.count
-    }
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        // swiftlint:disable force_cast
-        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: HomeTableViewCell.self),
-                                    for: indexPath) as! HomeTableViewCell
-        // swiftlint:enable force_cast
-        cell.titleLabel.text = usageHistory[indexPath.row].usageName ?? ""
-        cell.dateLabel.text = usageHistory[indexPath.row].usageDate?.toString(format: "dd MMMM yyyy - hh:mm") ?? ""
-        if usageHistory[indexPath.row].status ?? true {
-            cell.imageStatus.image = UIImage(named: "Arrow_Up")
-            cell.priceLabel.text = "+Rp \(convertIntToCurrency(value: usageHistory[indexPath.row].usagePrice ?? 0))"
-            cell.priceLabel.textColor = UIColor(red: 33/256, green: 150/256, blue: 83/256, alpha: 1.0)
-        } else {
-            cell.imageStatus.image = UIImage(named: "Arrow_Down")
-            cell.priceLabel.text = "-Rp \(convertIntToCurrency(value: usageHistory[indexPath.row].usagePrice ?? 0))"
-            cell.priceLabel.textColor = UIColor(red: 235/256, green: 87/256, blue: 87/256, alpha: 1.0)
-        }
-        return cell
-    }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let viewController = HomeDetailViewController(nibName: String(describing: HomeDetailViewController.self),
-            bundle: nil)
-        viewController.usageName = usageHistory[indexPath.row].usageName ?? ""
+        let viewController = HomeDetailViewController(nibName: String(describing: HomeDetailViewController.self), bundle: nil)
         viewController.ids = usageHistory[indexPath.row].ids ?? ""
-        viewController.usageDate = usageHistory[indexPath.row].usageDate?.toString(format: "dd MMMM yyyy - hh:mm") ?? ""
-        viewController.usagePrice = usageHistory[indexPath.row].usagePrice ?? 0
-        viewController.status = usageHistory[indexPath.row].status ?? true
         viewController.indexRow = indexPath.row
         viewController.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(viewController, animated: true)
@@ -163,14 +153,42 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDelegate
         }
     }
 }
+extension HomeViewController: HomePage {
+    @IBAction func buttonAdd(_ sender: Any) {
+        let viewController = HomeAddViewController(nibName: String(describing: HomeAddViewController.self), bundle: nil)
+        viewController.hidesBottomBarWhenPushed = true
+        viewController.delegateToast = self
+        self.navigationController?.pushViewController(viewController, animated: true)
+    }
+}
+extension HomeViewController: EmptyData {
+    func add() {
+        let viewController = HomeAddViewController(nibName: String(describing: HomeAddViewController.self), bundle: nil)
+        viewController.hidesBottomBarWhenPushed = true
+        viewController.delegateToast = self
+        self.navigationController?.pushViewController(viewController, animated: true)
+    }
+}
+extension HomeViewController: AddToast {
+    func showToast(message : String, seconds: Double){
+        let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+        alert.view.backgroundColor = .black
+        alert.view.alpha = 0.5
+        alert.view.layer.cornerRadius = 15
+        self.present(alert, animated: true)
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + seconds) {
+            alert.dismiss(animated: true)
+        }
+    }
+}
 extension Date {
     func toString(format: String) -> String {
-            let formatter = DateFormatter()
-            formatter.timeZone = .current
-            formatter.locale = .current
-            formatter.dateFormat = format
-            return formatter.string(from: self)
-        }
+        let formatter = DateFormatter()
+        formatter.timeZone = .current
+        formatter.locale = .current
+        formatter.dateFormat = format
+        return formatter.string(from: self)
+    }
 }
 extension Int {
     func convertIntToCurrency() -> String {
@@ -185,24 +203,4 @@ extension Int {
         return result
     }
 }
-extension HomeViewController: UsageDelegate {
-    func addUsage(usage: UsageHistory) {
-        usageHistory.append(usage)
-    }
-}
-extension HomeViewController: HomePage {
-    @IBAction func buttonAdd(_ sender: Any) {
-        let viewController = HomeAddViewController(nibName: String(describing: HomeAddViewController.self), bundle: nil)
-        viewController.hidesBottomBarWhenPushed = true
-        viewController.usageDelegate = self
-        self.navigationController?.pushViewController(viewController, animated: true)
-    }
-}
-extension HomeViewController: EmptyData {
-    func add() {
-        let viewController = HomeAddViewController(nibName: String(describing: HomeAddViewController.self), bundle: nil)
-        viewController.hidesBottomBarWhenPushed = true
-        viewController.usageDelegate = self
-        self.navigationController?.pushViewController(viewController, animated: true)
-    }
-}
+

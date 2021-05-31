@@ -22,6 +22,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeDetailViewController" customModule="MyMonee___Money_Saver" customModuleProvider="target">
             <connections>
                 <outlet property="buttonBackDetail" destination="8cT-9y-kTd" id="g1c-qK-AEe"/>
+                <outlet property="detailActivityIndicator" destination="Sym-Gd-ceY" id="wBL-fg-DI7"/>
                 <outlet property="incomeOrOutcome" destination="ilX-v7-tWj" id="Zdp-Qq-Gsi"/>
                 <outlet property="usageDateLabel" destination="k3r-1s-BUK" id="9N2-z6-cpg"/>
                 <outlet property="usageIdLabel" destination="X75-ZO-ZyG" id="LAR-Pr-vhk"/>
@@ -135,6 +136,9 @@
                                                 <action selector="backButton:" destination="-1" eventType="touchUpInside" id="xgr-k3-g5H"/>
                                             </connections>
                                         </button>
+                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="Sym-Gd-ceY">
+                                            <rect key="frame" x="197" y="335" width="20" height="20"/>
+                                        </activityIndicatorView>
                                     </subviews>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     <constraints>
@@ -193,7 +197,9 @@
                 <constraint firstItem="pTZ-oW-NbT" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="2yh-hP-OSt"/>
                 <constraint firstAttribute="bottom" secondItem="pTZ-oW-NbT" secondAttribute="bottom" id="Bcu-3i-Hn1"/>
                 <constraint firstItem="pTZ-oW-NbT" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="CqM-uE-hs2"/>
+                <constraint firstItem="Sym-Gd-ceY" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="WKe-yM-GyV"/>
                 <constraint firstItem="pTZ-oW-NbT" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="sQu-vi-oHq"/>
+                <constraint firstItem="Sym-Gd-ceY" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" id="wci-h8-sxS"/>
             </constraints>
             <point key="canvasLocation" x="-207.24637681159422" y="-15.401785714285714"/>
         </view>

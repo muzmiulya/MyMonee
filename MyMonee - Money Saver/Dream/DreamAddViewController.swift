@@ -7,15 +7,15 @@
 
 import UIKit
 
-protocol DreamDelegate {
-    func addDream(dream: Dreams)
+protocol AddToastDream {
+    func showToast(message : String, seconds: Double)
 }
 protocol DreamAdd {
     func buttonBack(_ sender: Any)
 }
 
 class DreamAddViewController: UIViewController, UITextFieldDelegate {
-    var dreamDelegate: DreamDelegate?
+    var delegateToast: AddToastDream?
     @IBOutlet weak var dreamTitle: UITextField!
     @IBOutlet weak var dreamGoal: UITextField!
     @IBOutlet weak var buttonSave: UIButton!
@@ -32,8 +32,9 @@ class DreamAddViewController: UIViewController, UITextFieldDelegate {
         let title = dreamTitle.text ?? ""
         let priceGoal = Int(dreamGoal.text ?? "") ?? 0
         let inputDream = Dreams(id: ids, dreamTitle: title, dreamPriceGoal: priceGoal)
-        dreamDelegate?.addDream(dream: inputDream)
+        NetworkServiceDreams().postMethod(dream: inputDream)
         self.navigationController?.popToRootViewController(animated: true)
+        delegateToast?.showToast(message: "Dream Succesfully Added!", seconds: 1.5)
     }
     func randomString(length: Int) -> String {
       let letters = "0123456789"

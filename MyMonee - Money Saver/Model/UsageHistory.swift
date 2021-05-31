@@ -7,24 +7,35 @@
 import Foundation
 
 protocol Counting {
-   func countBalance() -> Int
+    func countBalance() -> Int
 }
 
-struct UsageHistory {
+struct UsageHistory: Codable {
     var ids: String?
     var usageName: String?
     var usagePrice: Int?
-    var usageDate: Date?
-    var status: Bool?
-    init(ids: String?, usageName: String?, usagePrice: Int?, usageDate: Date?, status: Bool?) {
+    var usageDate: String?
+    var usageDateUpdated: String?
+    var status: Bool
+    init(ids: String, usageName: String, usagePrice: Int, usageDate: String, usageDateUpdated: String, status: Bool) {
         self.ids = ids
         self.usageName = usageName
         self.usagePrice = usagePrice
         self.usageDate = usageDate
+        self.usageDateUpdated = usageDateUpdated
         self.status = status
+    }
+    enum CodingKeys: String, CodingKey {
+        case ids
+        case usageName
+        case usagePrice
+        case usageDate
+        case usageDateUpdated
+        case status
     }
 }
 var usageHistory: [UsageHistory] = []
+var usageObject: UsageHistory = UsageHistory(ids: "", usageName: "", usagePrice: 0, usageDate: "", usageDateUpdated: "", status: true)
 
 class Usage {
     var usage: UsageHistory
@@ -46,45 +57,3 @@ class Balance: Counting {
     }
 }
 
-func getMethod() {
-        guard let url = URL(string: "https://60a587bcc0c1fd00175f4035.mockapi.io/api/v1/transaction") else {
-            print("Error: cannot create URL")
-            return
-        }
-        var request = URLRequest(url: url)
-        request.httpMethod = "GET"
-        URLSession.shared.dataTask(with: request) { data, response, error in
-            guard error == nil else {
-                print("Error: error calling GET")
-                print(error!)
-                return
-            }
-            guard let data = data else {
-                print("Error: Did not receive data")
-                return
-            }
-            guard let response = response as? HTTPURLResponse, (200 ..< 299) ~= response.statusCode else {
-                print("Error: HTTP request failed")
-                return
-            }
-            do {
-                guard let jsonObject = try JSONSerialization.jsonObject(with: data) as? [String: Any] else {
-                    print("Error: Cannot convert data to JSON object")
-                    return
-                }
-                guard let prettyJsonData = try? JSONSerialization.data(withJSONObject: jsonObject, options: .prettyPrinted) else {
-                    print("Error: Cannot convert JSON object to Pretty JSON data")
-                    return
-                }
-                guard let prettyPrintedJson = String(data: prettyJsonData, encoding: .utf8) else {
-                    print("Error: Could print JSON in String")
-                    return
-                }
-                
-                print(prettyPrintedJson)
-            } catch {
-                print("Error: Trying to convert JSON data to string")
-                return
-            }
-        }.resume()
-    }

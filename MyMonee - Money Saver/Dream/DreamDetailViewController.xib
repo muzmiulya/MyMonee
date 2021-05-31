@@ -21,6 +21,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DreamDetailViewController" customModule="MyMonee___Money_Saver" customModuleProvider="target">
             <connections>
+                <outlet property="activityIndicator" destination="kxt-Sm-K6u" id="Kk7-T4-HcI"/>
                 <outlet property="backButton" destination="t5E-gc-aTe" id="pLK-Fs-9Mx"/>
                 <outlet property="confirmButton" destination="dD5-3W-TWo" id="vby-8a-8EB"/>
                 <outlet property="dreamDetailView" destination="Vbl-XT-pDq" id="Cqh-1H-0Qo"/>
@@ -158,6 +159,9 @@
                                                 <constraint firstItem="pgf-cm-ky8" firstAttribute="leading" secondItem="dy5-ma-mUs" secondAttribute="leading" id="zG2-P6-s3w"/>
                                             </constraints>
                                         </view>
+                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="kxt-Sm-K6u">
+                                            <rect key="frame" x="197" y="384" width="20" height="20"/>
+                                        </activityIndicatorView>
                                     </subviews>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     <constraints>
@@ -165,7 +169,9 @@
                                         <constraint firstItem="ZLs-YK-LbA" firstAttribute="top" secondItem="rah-MN-krb" secondAttribute="bottom" constant="65" id="8bj-N6-1sr"/>
                                         <constraint firstItem="iAp-I5-1zV" firstAttribute="top" secondItem="ZLs-YK-LbA" secondAttribute="bottom" constant="17" id="CEx-zu-nWO"/>
                                         <constraint firstItem="t5E-gc-aTe" firstAttribute="leading" secondItem="dD5-3W-TWo" secondAttribute="leading" id="CVa-5p-f9V"/>
+                                        <constraint firstItem="kxt-Sm-K6u" firstAttribute="centerX" secondItem="Vbl-XT-pDq" secondAttribute="centerX" id="D9H-HQ-2Gc"/>
                                         <constraint firstAttribute="trailing" secondItem="ZLs-YK-LbA" secondAttribute="trailing" constant="17" id="SBx-6B-Dcd"/>
+                                        <constraint firstItem="kxt-Sm-K6u" firstAttribute="centerY" secondItem="Vbl-XT-pDq" secondAttribute="centerY" id="TYS-b7-uKh"/>
                                         <constraint firstItem="XUL-aG-dFa" firstAttribute="centerX" secondItem="WRH-Ua-gPu" secondAttribute="centerX" id="VP4-Mq-laR"/>
                                         <constraint firstItem="ZLs-YK-LbA" firstAttribute="leading" secondItem="Vbl-XT-pDq" secondAttribute="leading" constant="17" id="XNQ-mU-hum"/>
                                         <constraint firstAttribute="trailing" secondItem="WRH-Ua-gPu" secondAttribute="trailing" constant="17" id="Y4Q-9v-chU"/>

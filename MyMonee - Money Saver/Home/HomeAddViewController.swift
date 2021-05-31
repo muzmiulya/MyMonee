@@ -7,16 +7,16 @@
 
 import UIKit
 
-protocol UsageDelegate {
-    func addUsage(usage: UsageHistory)
+protocol AddToast {
+    func showToast(message : String, seconds: Double)
 }
+
 protocol HomeAdd {
     func buttonBack(_ sender: Any)
 }
 class HomeAddViewController: UIViewController, UITextFieldDelegate {
     var utilization: Bool = true
-    var usageDelegate: UsageDelegate?
-
+    var delegateToast: AddToast?
     @IBOutlet weak var titleUsage: UITextField!
     @IBOutlet weak var usageAmount: UITextField!
     @IBOutlet weak var buttonView: UIView!
@@ -51,7 +51,7 @@ class HomeAddViewController: UIViewController, UITextFieldDelegate {
         utilization = true
         buttonSave.isEnabled = true
         buttonSave.layer.backgroundColor = CGColor(red: 80/256, green: 105/256, blue: 184/256, alpha: 1.0)
-        }
+    }
     @IBAction func tappedOut(_ gestureRecognizer: UITapGestureRecognizer) {
         buttonView.layer.borderWidth = 1
         buttonView.layer.borderColor = UIColor.white.cgColor
@@ -60,12 +60,12 @@ class HomeAddViewController: UIViewController, UITextFieldDelegate {
         utilization = false
         buttonSave.isEnabled = true
         buttonSave.layer.backgroundColor = CGColor(red: 80/256, green: 105/256, blue: 184/256, alpha: 1.0)
-        }
+    }
     @IBAction func addNewUsage(_ sender: Any) {
         if titleUsage.text?.isEmpty == true || usageAmount.text?.isEmpty == true {
             let alert = UIAlertController(title: "Judul dan Jumlah pemakaian harus diisi!",
-                                           message: "",
-                                           preferredStyle: UIAlertController.Style.alert)
+                                          message: "",
+                                          preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.cancel, handler: nil))
             return self.present(alert, animated: true, completion: nil)
         } else {
@@ -73,21 +73,23 @@ class HomeAddViewController: UIViewController, UITextFieldDelegate {
             let ids = "MM-\(randomString(length: 6))"
             let title = titleUsage.text ?? ""
             let amount = Int(usageAmount.text ?? "") ?? 0
-//            let timestamp = Date().toString(format: "dd MMMM yyyy - hh:mm")
-            let timestamp = Date()
+            let timestamp = Date().toString(format: "dd MMMM yyyy - hh:mm")
             let usage = UsageHistory(ids: ids,
                                      usageName: title,
                                      usagePrice: amount,
                                      usageDate: timestamp,
+                                     usageDateUpdated: timestamp,
                                      status: utilization)
-            usageDelegate?.addUsage(usage: usage)
+            NetworkService().postMethod(usage: usage)
             self.navigationController?.popToRootViewController(animated: true)
+            delegateToast?.showToast(message: "Usage Succesfully Added!", seconds: 1.5)
         }
     }
     func randomString(length: Int) -> String {
-      let letters = "0123456789"
-      return String((0..<length).map { _ in letters.randomElement()! })
+        let letters = "0123456789"
+        return String((0..<length).map { _ in letters.randomElement()! })
     }
+    
     func textField(_ textField: UITextField,
                    shouldChangeCharactersIn range: NSRange,
                    replacementString string: String) -> Bool {

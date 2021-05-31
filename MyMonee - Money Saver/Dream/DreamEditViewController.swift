@@ -14,6 +14,7 @@ protocol EditDream {
 }
 
 class DreamEditViewController: UIViewController, UITextFieldDelegate {
+    var id: String = ""
     var titles: String = ""
     var priceGoal: Int = 0
     var indexRow: Int = 0
@@ -63,20 +64,27 @@ extension DreamEditViewController: EditDream {
     @IBAction func editButton(_ sender: Any) {
         let title = titleEdit.text ?? ""
         let priceGoal = Int(priceGoalEdit.text ?? "") ?? 0
-        dreams[indexRow].dreamTitle = title
-        dreams[indexRow].dreamPriceGoal = priceGoal
+        let dream = Dreams(id: id, dreamTitle: title, dreamPriceGoal: priceGoal)
+        NetworkServiceDreams().putMethod(dream: dream)
         self.navigationController?.popToRootViewController(animated: true)
+        NotificationCenter.default.post(name: Notification.Name("EditDream"),
+                                        object: nil,
+                                        userInfo: ["text": "Dream Successfully Edited!", "seconds": 1.5])
     }
     @IBAction func deleteButton(_ sender: Any) {
         let alert = UIAlertController(title: "Apakah anda yakin ingin menghapus Impian?",
                                        message: "",
                                        preferredStyle: UIAlertController.Style.alert)
         let deleteAction = UIAlertAction(title: "Hapus", style: UIAlertAction.Style.default) {_ in
-            dreams.remove(at: self.indexRow)
+            NetworkServiceDreams().deleteMethod(id: self.id)
             self.navigationController?.popToRootViewController(animated: true)
+            NotificationCenter.default.post(name: Notification.Name("EditDream"),
+                                            object: nil,
+                                            userInfo: ["text": "Dream Successfully Deleted!", "seconds": 1.5])
             }
         alert.addAction(deleteAction)
         alert.addAction(UIAlertAction(title: "Batal", style: UIAlertAction.Style.cancel, handler: nil))
         self.present(alert, animated: true, completion: nil)
+        
     }
 }

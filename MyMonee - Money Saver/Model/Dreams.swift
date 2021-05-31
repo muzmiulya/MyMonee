@@ -11,17 +11,23 @@ protocol AddNewDream {
     func addNewDream()
 }
 
-struct Dreams {
+struct Dreams: Codable {
     var id: String?
     var dreamTitle: String?
     var dreamPriceGoal: Int?
-    init(id: String?, dreamTitle: String?, dreamPriceGoal: Int?) {
+    init(id: String, dreamTitle: String, dreamPriceGoal: Int) {
         self.id = id
         self.dreamTitle = dreamTitle
         self.dreamPriceGoal = dreamPriceGoal
     }
+    enum CodingKeys: String, CodingKey {
+        case id
+        case dreamTitle
+        case dreamPriceGoal
+    }
 }
 var dreams: [Dreams] = []
+var dreamObject: Dreams = Dreams(id: "", dreamTitle: "", dreamPriceGoal: 0)
 
 class AddDream {
     var dream: Dreams
